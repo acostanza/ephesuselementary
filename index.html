@@ -23,7 +23,7 @@
         .hero {
             background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
             color: white;
-            padding: 40px 20px 40px 280px;
+            padding: 40px 20px 40px 170px;
             text-align: left;
             position: relative;
         }
@@ -266,35 +266,6 @@
             opacity: 0.3;
         }
 
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .floating-nav {
-                display: none;
-            }
-
-            .hero,
-            .content-section {
-                padding-left: 40px;
-                padding-right: 40px;
-            }
-
-            .section-card {
-                padding: 30px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .content-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .stats {
-                flex-direction: column;
-            }
-        }
-
         /* School Logo */
         .school-logo {
             position: fixed;
@@ -318,6 +289,165 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            z-index: 1500;
+            padding: 10px 5px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item.active {
+            background: #fef9f9;
+            color: #e6031b;
+            font-weight: 700;
+        }
+
+        .mobile-nav-item:hover {
+            background: #f8f9fa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .floating-nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .school-logo {
+                width: 80px;
+                top: 10px;
+                left: 10px;
+                padding: 8px;
+            }
+
+            .hero {
+                padding: 30px 20px 30px 130px;
+            }
+
+            .content-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .content-section {
+                padding-bottom: 80px;
+            }
+
+            .section-card {
+                padding: 25px 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .hero .description {
+                font-size: 0.9rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .stat-card {
+                width: 100%;
+            }
+
+            .popup-notification {
+                bottom: 80px;
+                width: calc(100% - 20px);
+                left: 10px;
+                right: 10px;
+                padding: 20px;
+            }
+
+            .popup-heading {
+                font-size: 1.2rem;
+            }
+
+            .popup-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .school-logo {
+                width: 50px;
+                top: 8px;
+                left: 8px;
+                padding: 5px;
+            }
+
+            .hero {
+                padding: 15px 10px 15px 80px;
+            }
+
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.9rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .section-card {
+                padding: 20px 15px;
+            }
+
+            .mobile-nav-item {
+                font-size: 0.7rem;
+                padding: 6px 3px;
+            }
         }
 
         /* Popup Notification */
@@ -461,6 +591,17 @@
         </div>
     </nav>
 
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item active" data-section="walkability">Walk</div>
+            <div class="mobile-nav-item" data-section="housing">Housing</div>
+            <div class="mobile-nav-item" data-section="title1">Title 1</div>
+            <div class="mobile-nav-item" data-section="growth">Growth</div>
+            <div class="mobile-nav-item" data-section="expansion">Land</div>
+        </div>
+    </nav>
+
     <!-- Section 1: Walkability -->
     <section class="content-section" id="walkability">
         <div class="section-card">
@@ -472,11 +613,7 @@
             <div class="highlight-box">
                 <h3>Benefits of Our Central Location</h3>
                 <ul>
-                    <li>Students can safely walk or bike to school</li>
-                    <li>Reduced transportation costs for families and the district</li>
-                    <li>Stronger parent involvement with easier access</li>
-                    <li>Lower carbon footprint and environmental impact</li>
-                    <li>Enhanced community engagement and local partnerships</li>
+                    <li>TBD</li>
                 </ul>
             </div>
         </div>
@@ -496,10 +633,7 @@
             <div class="highlight-box">
                 <h3>Supporting Working Families</h3>
                 <ul>
-                    <li>Close to major affordable housing developments</li>
-                    <li>Easy access for parents with varied work schedules</li>
-                    <li>Community resources within walking distance</li>
-                    <li>Partnerships with local family support services</li>
+                    <li>TBD</li>
                 </ul>
             </div>
         </div>
@@ -515,22 +649,14 @@
             </p>
             <div class="stats">
                 <div class="stat-card">
-                    <span class="stat-number">38%</span>
+                    <span class="stat-number" id="stat-38" data-target="38">0%</span>
                     <span class="stat-label">Free/Reduced Lunch</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Commitment to Equity</span>
                 </div>
             </div>
             <div class="highlight-box">
                 <h3>Title 1 Resources & Support</h3>
                 <ul>
-                    <li>Additional funding for educational programs</li>
-                    <li>Extended learning opportunities and tutoring</li>
-                    <li>Family engagement and support services</li>
-                    <li>Technology access for all students</li>
-                    <li>Professional development for teachers</li>
+                    <li>TBD</li>
                 </ul>
             </div>
         </div>
@@ -550,12 +676,7 @@
             <div class="highlight-box">
                 <h3>Our Success Factors</h3>
                 <ul>
-                    <li>Data-driven instruction tailored to individual needs</li>
-                    <li>Small group interventions and support</li>
-                    <li>Highly qualified and dedicated teaching staff</li>
-                    <li>Focus on social-emotional learning alongside academics</li>
-                    <li>Strong partnerships between teachers, families, and specialists</li>
-                    <li>Comprehensive support for students with special needs</li>
+                    <li>TBD</li>
                 </ul>
             </div>
         </div>
@@ -572,21 +693,48 @@
             <div class="highlight-box">
                 <h3>Future Growth Opportunities</h3>
                 <ul>
-                    <li>Space for additional classrooms and learning centers</li>
-                    <li>Potential for expanded athletic and recreational facilities</li>
-                    <li>Room for community garden and outdoor learning spaces</li>
-                    <li>Capacity to add before and after-school care facilities</li>
-                    <li>Flexibility to accommodate growing enrollment</li>
-                    <li>Opportunity for partnership with community organizations</li>
+                    <li>TBD</li>
                 </ul>
             </div>
-            <p style="margin-top: 30px; font-style: italic; color: #777;">
-                Ephesus Elementary School: Where community and education grow together, creating a brighter future for every child.
-            </p>
         </div>
     </section>
 
     <script>
+        // 38% stat count-up animation when Title 1 section reaches halfway up viewport
+        (function() {
+            const statEl = document.getElementById('stat-38');
+            const section = document.getElementById('title1');
+            if (!statEl || !section) return;
+
+            let animated = false;
+            const target = 38;
+            const duration = 2250;
+
+            function checkAndAnimate() {
+                if (animated) return;
+                const rect = section.getBoundingClientRect();
+                const viewportMid = window.innerHeight / 2;
+                if (rect.top <= viewportMid) {
+                    animated = true;
+                    let start = null;
+                    function step(timestamp) {
+                        if (!start) start = timestamp;
+                        const elapsed = timestamp - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 2);
+                        const value = Math.round(easeOut * target);
+                        statEl.textContent = value + '%';
+                        if (progress < 1) requestAnimationFrame(step);
+                        else statEl.textContent = target + '%';
+                    }
+                    requestAnimationFrame(step);
+                }
+            }
+
+            window.addEventListener('scroll', checkAndAnimate, { passive: true });
+            checkAndAnimate();
+        })();
+
         // Popup notification functionality
         document.addEventListener('DOMContentLoaded', () => {
             const popup = document.getElementById('emailPopup');
@@ -607,6 +755,7 @@
         // Smooth scroll and navigation highlighting
         const sections = document.querySelectorAll('.content-section, .hero');
         const navItems = document.querySelectorAll('.nav-item');
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
 
         // Update active nav item on scroll
         window.addEventListener('scroll', () => {
@@ -622,7 +771,16 @@
                 }
             });
 
+            // Update desktop nav
             navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Update mobile nav
+            mobileNavItems.forEach(item => {
                 item.classList.remove('active');
                 if (item.getAttribute('data-section') === current) {
                     item.classList.add('active');
@@ -630,8 +788,20 @@
             });
         });
 
-        // Click navigation
+        // Desktop navigation click
         navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Mobile navigation click
+        mobileNavItems.forEach(item => {
             item.addEventListener('click', () => {
                 const sectionId = item.getAttribute('data-section');
                 const section = document.getElementById(sectionId);
