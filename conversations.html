@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Starting Ideas - Ephesus Elementary School</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #f5f5f5;
+        }
+        .hero {
+            background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
+            color: white;
+            padding: 40px 20px 40px 170px;
+            text-align: left;
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; }
+        .hero .description { font-size: 1.05rem; max-width: 800px; opacity: 0.95; line-height: 1.7; }
+        .school-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            width: 120px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            display: block;
+            text-decoration: none;
+        }
+        .school-logo:hover { transform: scale(1.05); }
+        .school-logo img { width: 100%; height: auto; display: block; }
+        .floating-nav {
+            position: fixed;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-40%);
+            z-index: 2001;
+            width: 200px;
+            padding-top: 40px;
+        }
+        .nav-item {
+            position: relative;
+            margin-bottom: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-item:last-child { margin-bottom: 0; }
+        .nav-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ddd;
+            border: 3px solid #e6031b;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        .nav-item.active .nav-dot { background: #e6031b; transform: scale(1.3); }
+        .nav-label {
+            padding-left: 35px;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-item.active .nav-label { color: #e6031b; font-weight: 700; }
+        .nav-item:hover .nav-label { color: #e6031b; }
+        .nav-item:not([data-section="contacts"])::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 40px);
+            background: repeating-linear-gradient(to bottom, #e6031b 0px, #e6031b 8px, transparent 8px, transparent 16px);
+            z-index: 1;
+        }
+        /* Sidebar Photo */
+        .sidebar-photo {
+            margin-top: 120px;
+            width: 100%;
+        }
+        .sidebar-photo img {
+            width: 125%;
+            height: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        /* Sidebar Buttons */
+        .sidebar-buttons {
+            position: fixed;
+            left: 40px;
+            bottom: 0;
+            width: 200px;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            z-index: 1000;
+        }
+        .sidebar-button {
+            background: white;
+            color: #e6031b;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.7425rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        .sidebar-button:hover {
+            background: #e6031b;
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 3, 27, 0.3);
+            transform: translateY(-2px);
+        }
+        .content-section {
+            padding: 60px 80px 60px 320px;
+            background: transparent;
+        }
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(230, 3, 27, 0.15);
+        }
+        .content-section:nth-child(2) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); }
+        .content-section:nth-child(3) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
+        .content-section:nth-child(4) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f5f8fa 100%); }
+        .content-section:nth-child(5) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
+        .content-section h2 { font-size: 2.5rem; color: #e6031b; margin-bottom: 25px; font-weight: 700; }
+        .content-section .section-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #e6031b;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .content-section p { font-size: 1.1rem; line-height: 1.8; max-width: 800px; color: #555; margin-bottom: 20px; }
+        .content-section a { color: #e6031b; text-decoration: underline; font-weight: 600; }
+        .content-section a:hover { color: #b8020f; }
+        .email-placeholder {
+            background: #fff8e6;
+            border: 1px dashed #e6031b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #b8020f;
+        }
+        .email-template-body {
+            max-width: 800px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+            white-space: pre-wrap;
+        }
+        .email-template-body ul { margin: 1rem 0; padding-left: 1.5rem; }
+        .email-template-body li { margin-bottom: 0.75rem; }
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            z-index: 1500;
+            padding: 10px 5px;
+        }
+        .mobile-nav-items { display: flex; justify-content: space-around; align-items: center; gap: 5px; }
+        .mobile-nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .mobile-nav-item.active { background: #fef9f9; color: #e6031b; font-weight: 700; }
+        .mobile-nav-item:hover { background: #f8f9fa; }
+        @media (max-width: 968px) {
+            .floating-nav { display: none; }
+            .sidebar-buttons { display: none; }
+            .mobile-nav { display: block; }
+            .school-logo { width: 80px; top: 10px; left: 10px; padding: 8px; }
+            .hero { padding: 30px 20px 30px 130px; }
+            .content-section { padding: 60px 20px 60px 20px; padding-bottom: 80px; }
+            .section-card { padding: 25px 20px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero .description { font-size: 0.9rem; }
+            .content-section h2 { font-size: 1.6rem; }
+            .content-section p { font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .school-logo { width: 50px; top: 8px; left: 8px; padding: 5px; }
+            .hero { padding: 15px 10px 15px 80px; }
+            .hero h1 { font-size: 1.5rem; }
+            .content-section h2 { font-size: 1.4rem; }
+            .section-card { padding: 20px 15px; }
+            .mobile-nav-item { font-size: 0.65rem; padding: 6px 2px; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="school-logo" aria-label="Ephesus Elementary School - Home">
+        <img src="ephesus-logo.png" alt="Ephesus Elementary School Logo">
+    </a>
+
+    <section class="hero" id="hero">
+        <h1>Conversation Starting Ideas</h1>
+        <div class="description">
+            Contact school leadership, your friends, family, and anyone else who cares to keep Ephesus Elementary a beacon of educational excellence and community connectivity in Chapel Hill. Use the resources below to start the conversation.
+        </div>
+    </section>
+
+    <nav class="floating-nav">
+        <div class="nav-item active" data-section="leadership">
+            <div class="nav-dot"></div>
+            <div class="nav-label">School District Leadership</div>
+        </div>
+        <div class="nav-item" data-section="full-example">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Full Example Email</div>
+        </div>
+        <div class="nav-item" data-section="template">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Simple Email Template</div>
+        </div>
+        <div class="nav-item" data-section="contacts">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Additional Contacts</div>
+        </div>
+        <div class="sidebar-photo">
+            <img src="Resources/Ephesus_alert.jpg" alt="Ephesus Elementary School Community">
+        </div>
+    </nav>
+
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item active" data-section="leadership">Leadership</div>
+            <div class="mobile-nav-item" data-section="full-example">Full Email</div>
+            <div class="mobile-nav-item" data-section="template">Template</div>
+            <div class="mobile-nav-item" data-section="contacts">Contacts</div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Buttons -->
+    <div class="sidebar-buttons">
+        <a href="index.html" class="sidebar-button">Home</a>
+        <a href="conversations.html" class="sidebar-button">Conversations</a>
+        <a href="resources.html" class="sidebar-button">Resources</a>
+    </div>
+
+    <section class="content-section" id="leadership">
+        <div class="section-card">
+            <div class="section-number">1</div>
+            <h2>School District Leadership</h2>
+            <p style="margin-bottom: 1.25rem;">Chapel Hill–Carrboro City Schools leadership contacts:</p>
+            <ul style="list-style: none; padding: 0; max-width: 800px;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. Rodney Trice</strong>, Superintendent — <a href="mailto:superintendent@chccs.k12.nc.us">superintendent@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. Bob Bales</strong>, Chief Academic Officer — <a href="mailto:rbales@chccs.k12.nc.us">rbales@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Al Ciarochi</strong>, Deputy Superintendent for Operations — <a href="mailto:aciarochi@chccs.k12.nc.us">aciarochi@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Brandy Reeves</strong>, Chief of Staff and School Leadership — <a href="mailto:breeves@chccs.k12.nc.us">breeves@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Andy Jenks</strong>, Chief Communications Officer — <a href="mailto:ajenks@chccs.k12.nc.us">ajenks@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. André Stewart</strong>, Chief Operations Officer — <a href="mailto:adstewart@chccs.k12.nc.us">adstewart@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jonathan Scott</strong>, Chief Financial Officer — <a href="mailto:jscott@chccs.k12.nc.us">jscott@chccs.k12.nc.us</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-section" id="full-example">
+        <div class="section-card">
+            <div class="section-number">2</div>
+            <h2>Full Example Email</h2>
+            <div class="email-template-body" style="white-space: normal;">
+                <p>Dear CHCCS School Board Members,</p>
+                <p>I do not envy the position you are in to decide which elementary school(s) to close, and I will begin by thanking you for your service to our district.</p>
+                <p>I am a parent of two students at Ephesus Elementary and a member of the School Improvement Team. Here are my requests of you as you consider all of the options for moving our district forward:</p>
+                <ul>
+                    <li>Please consider revisiting the use of the <strong>$175M bond funds</strong>. Please challenge the two assumptions that (1) the most fiscally prudent use of those funds is to completely rebuild three schools and that (2) the funds must be earmarked for the three schools in the current plan. The issues and facts that Orange County residents considered when initially approving the bond have now changed. I would appreciate seeing a plan that included a cost breakdown for <strong>repair/renovation of major needs at a few schools</strong> instead of constructing three entirely new facilities and refocusing the balance of the funds to school resources/programs/teachers. <u>If that requires a revote, let's pursue the path that is most advantageous to our district, not the one we are hesitant to change because of inertia.</u></li>
+                    <li>Please consider that Ephesus is a <strong>Title I school</strong> and that it had the <strong>highest student growth scores</strong> in the district last year among elementary schools. Something about this particular teacher and leadership team and school community is getting it right. We talk about closing the achievement gap; let's preserve the communities that have proven they can.</li>
+                    <li>Please consider location of the schools: <strong>neighborhood walkability, proximity of students to the school, local traffic, transportation needs of students, and room to grow the campus</strong> (i.e. additional available land).</li>
+                    <li>Finally a plug for the <strong>French program</strong>, a significant reason we chose a house zoned for Ephesus as it is only one of two elementary schools that teaches French. No matter your decision, please <strong>find a path that allows students to continue to learn their current foreign language</strong> and not force the students to change to learning a new language with peers who are already much further along.</li>
+                </ul>
+                <p>Thank you for being thoughtful and deliberate in this decision and for thinking outside the box in which we currently appear to constrain ourselves.</p>
+                <p>I am copying Stacie to highlight to the Board what an excellent leader she is for our school; any student or teacher in the district would be lucky to move under her leadership and in the welcoming and joyful community she fosters to support the growth of each individual learner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="template">
+        <div class="section-card">
+            <div class="section-number">3</div>
+            <h2>Simple Email Template</h2>
+            <div class="email-template-body">Dear <span class="email-placeholder">[Superintendent / District Leadership Team]</span>,
+
+I am a parent in the CHCCS district and part of the Ephesus Elementary community. I recognize the difficult position the district is in as it plans for enrollment changes, aging facilities, and long-term fiscal responsibility.
+
+I am writing to ask how family decision-making factors — such as early childhood program continuity, walkability and transportation, access to Title I services, and affordable housing already approved to feed into neighborhood schools — will be incorporated into the district's analysis as conversations about potential school closures continue.
+
+Many families understand the need for responsible planning, but are concerned that uncertainty itself may accelerate enrollment declines. I appreciate any clarity you can provide about how these dynamics will be considered in future proposals.
+
+Thank you for your time and for your continued work on behalf of our students.
+
+Sincerely,
+<span class="email-placeholder">[Your Name]</span></div>
+        </div>
+    </section>
+
+    <section class="content-section" id="contacts">
+        <div class="section-card">
+            <div class="section-number">4</div>
+            <h2>Additional Contacts</h2>
+            <p style="margin-bottom: 1.25rem;">Directory for emails and letters. You can select and copy the groups below for To:, CC:, or BCC: fields.</p>
+
+            <h3 style="font-size: 1.35rem; color: #333; margin: 1.5rem 0 0.75rem 0;">Orange County Board of Commissioners</h3>
+            <ul style="list-style: none; padding: 0; max-width: 800px;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jean Hamilton</strong>, Vice Chair — <a href="mailto:jhamilton@orangecountync.gov">jhamilton@orangecountync.gov</a> — 919-360-0428</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Amy Fowler</strong>, Vice Chair — <a href="mailto:afowler@orangecountync.gov">afowler@orangecountync.gov</a> — 919-698-8168</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jamezetta Bedford</strong>, Chair (running for election) — <a href="mailto:Jbedford@orangecountync.gov">Jbedford@orangecountync.gov</a> — 984-484-8970</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Marilyn Carter</strong> — <a href="mailto:mcarter@orangecountync.gov">mcarter@orangecountync.gov</a> — 919-475-7353</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Sally Greene</strong> — <a href="mailto:sgreene@orangecountync.gov">sgreene@orangecountync.gov</a> — 919-260-4077</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Earl McKee</strong> — <a href="mailto:emckee@orangecountync.gov">emckee@orangecountync.gov</a> — 919-812-3248</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Phyllis Portie-Ascott</strong> — <a href="mailto:pportie-ascott@orangecountync.gov">pportie-ascott@orangecountync.gov</a> — 984-484-1716</li>
+            </ul>
+
+            <h3 style="font-size: 1.35rem; color: #333; margin: 1.5rem 0 0.75rem 0;">Chapel Hill–Carrboro City Schools Board of Education</h3>
+            <ul style="list-style: none; padding: 0; max-width: 800px;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Riza Jenkins</strong>, J.D., M.B.A., Board Chair — <a href="mailto:rjenkins@chccs.k12.nc.us">rjenkins@chccs.k12.nc.us</a> — 919-923-9803</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Barbara Fedders</strong>, J.D., Board Vice Chair — <a href="mailto:barbara.fedders@chccs.k12.nc.us">barbara.fedders@chccs.k12.nc.us</a> — 910-466-1108</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Meredith H. Ballew</strong>, M.P.A. — <a href="mailto:meredith.ballew@chccs.k12.nc.us">meredith.ballew@chccs.k12.nc.us</a> — 919-533-9929</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Rani D. Dasi</strong>, M.B.A. — <a href="mailto:rdasi@chccs.k12.nc.us">rdasi@chccs.k12.nc.us</a> — 919-869-7055</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Vickie L. Feaster Fornville</strong> — <a href="mailto:vfeasterfornville@chccs.k12.nc.us">vfeasterfornville@chccs.k12.nc.us</a> — 919-602-6292</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>George W. Griffin</strong>, Ph.D. — <a href="mailto:ggriffin@chccs.k12.nc.us">ggriffin@chccs.k12.nc.us</a> — 919-306-2924</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Melinda Manning</strong>, J.D., M.S.W. — <a href="mailto:melinda.manning@chccs.k12.nc.us">melinda.manning@chccs.k12.nc.us</a> — 919-259-3819</li>
+            </ul>
+
+            <h3 style="font-size: 1.35rem; color: #333; margin: 1.5rem 0 0.75rem 0;">Chapel Hill–Carrboro City Schools Leadership</h3>
+            <p style="margin-bottom: 0.5rem;">See also <a href="#leadership">School District Leadership</a> above.</p>
+            <ul style="list-style: none; padding: 0; max-width: 800px;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. Rodney Trice</strong>, Superintendent — <a href="mailto:superintendent@chccs.k12.nc.us">superintendent@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. Bob Bales</strong>, Chief Academic Officer — <a href="mailto:rbales@chccs.k12.nc.us">rbales@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Al Ciarochi</strong>, Deputy Superintendent for Operations — <a href="mailto:aciarochi@chccs.k12.nc.us">aciarochi@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Brandy Reeves</strong>, Chief of Staff and School Leadership — <a href="mailto:breeves@chccs.k12.nc.us">breeves@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Andy Jenks</strong>, Chief Communications Officer — <a href="mailto:ajenks@chccs.k12.nc.us">ajenks@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. André Stewart</strong>, Chief Operations Officer — <a href="mailto:adstewart@chccs.k12.nc.us">adstewart@chccs.k12.nc.us</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jonathan Scott</strong>, Chief Financial Officer — <a href="mailto:jscott@chccs.k12.nc.us">jscott@chccs.k12.nc.us</a></li>
+            </ul>
+
+            <h3 style="font-size: 1.35rem; color: #333; margin: 1.5rem 0 0.75rem 0;">Town of Chapel Hill Leadership</h3>
+            <ul style="list-style: none; padding: 0; max-width: 800px;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jessica Anderson</strong>, Chapel Hill Mayor — <a href="mailto:janderson@townofchapelhill.org">janderson@townofchapelhill.org</a> — 919-968-2714</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Camille Berry</strong>, Mayor Pro Tem — <a href="mailto:cberry@townofchapelhill.org">cberry@townofchapelhill.org</a> — 919-960-1188</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Amy Ryan</strong>, Council Member — <a href="mailto:aryan@townofchapelhill.org">aryan@townofchapelhill.org</a> — 919-590-5772</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Melissa McCullough</strong>, Council Member — <a href="mailto:mmccullough@townofchapelhill.org">mmccullough@townofchapelhill.org</a> — 919-357-0333</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Wes McMahon</strong>, Council Member — <a href="mailto:wmcmahon@townofchapelhill.org">wmcmahon@townofchapelhill.org</a> — 984-208-6953</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Emily Holt</strong>, Council Member / Affordable Housing — <a href="mailto:eholt@townofchapelhill.org">eholt@townofchapelhill.org</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('.content-section, .hero');
+        const navItems = document.querySelectorAll('.nav-item');
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = 'hero';
+            const viewportMid = window.innerHeight / 2;
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= viewportMid && rect.bottom >= viewportMid) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('data-section') === current);
+            });
+            mobileNavItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('data-section') === current);
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const el = document.getElementById(item.getAttribute('data-section'));
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const el = document.getElementById(item.getAttribute('data-section'));
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

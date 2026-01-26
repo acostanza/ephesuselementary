@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Ephesus Elementary School</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #f5f5f5;
+        }
+        .hero {
+            background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
+            color: white;
+            padding: 40px 20px 40px 170px;
+            text-align: left;
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; }
+        .hero .description { font-size: 1.05rem; max-width: 800px; opacity: 0.95; line-height: 1.7; }
+        .school-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            width: 120px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            display: block;
+            text-decoration: none;
+        }
+        .school-logo:hover { transform: scale(1.05); }
+        .school-logo img { width: 100%; height: auto; display: block; }
+        .floating-nav {
+            position: fixed;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-40%);
+            z-index: 2001;
+            width: 200px;
+            padding-top: 40px;
+        }
+        .nav-item {
+            position: relative;
+            margin-bottom: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-item:last-child { margin-bottom: 0; }
+        .nav-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ddd;
+            border: 3px solid #e6031b;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        .nav-item.active .nav-dot { background: #e6031b; transform: scale(1.3); }
+        .nav-label {
+            padding-left: 35px;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-item.active .nav-label { color: #e6031b; font-weight: 700; }
+        .nav-item:hover .nav-label { color: #e6031b; }
+        .nav-item:not([data-section="other"])::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 40px);
+            background: repeating-linear-gradient(to bottom, #e6031b 0px, #e6031b 8px, transparent 8px, transparent 16px);
+            z-index: 1;
+        }
+        /* Sidebar Photo */
+        .sidebar-photo {
+            margin-top: 120px;
+            width: 100%;
+        }
+        .sidebar-photo img {
+            width: 125%;
+            height: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        /* Sidebar Buttons */
+        .sidebar-buttons {
+            position: fixed;
+            left: 40px;
+            bottom: 0;
+            width: 200px;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            z-index: 1000;
+        }
+        .sidebar-button {
+            background: white;
+            color: #e6031b;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.7425rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        .sidebar-button:hover {
+            background: #e6031b;
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 3, 27, 0.3);
+            transform: translateY(-2px);
+        }
+        .content-section {
+            padding: 60px 80px 60px 320px;
+            background: transparent;
+        }
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(230, 3, 27, 0.15);
+        }
+        .content-section:nth-child(2) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); }
+        .content-section:nth-child(3) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
+        .content-section:nth-child(4) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f5f8fa 100%); }
+        .content-section:nth-child(5) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
+        .content-section:nth-child(6) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); }
+        .content-section:nth-child(7) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
+        .content-section h2 { font-size: 2.5rem; color: #e6031b; margin-bottom: 25px; font-weight: 700; }
+        .content-section .section-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #e6031b;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .content-section p { font-size: 1.1rem; line-height: 1.8; max-width: 800px; color: #555; margin-bottom: 20px; }
+        .content-section a { color: #e6031b; text-decoration: underline; font-weight: 600; }
+        .content-section a:hover { color: #b8020f; }
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            z-index: 1500;
+            padding: 10px 5px;
+        }
+        .mobile-nav-items { display: flex; justify-content: space-around; align-items: center; gap: 5px; }
+        .mobile-nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .mobile-nav-item.active { background: #fef9f9; color: #e6031b; font-weight: 700; }
+        .mobile-nav-item:hover { background: #f8f9fa; }
+        @media (max-width: 968px) {
+            .floating-nav { display: none; }
+            .sidebar-buttons { display: none; }
+            .mobile-nav { display: block; }
+            .school-logo { width: 80px; top: 10px; left: 10px; padding: 8px; }
+            .hero { padding: 30px 20px 30px 130px; }
+            .content-section { padding: 60px 20px 60px 20px; padding-bottom: 80px; }
+            .section-card { padding: 25px 20px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero .description { font-size: 0.9rem; }
+            .content-section h2 { font-size: 1.6rem; }
+            .content-section p { font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .school-logo { width: 50px; top: 8px; left: 8px; padding: 5px; }
+            .hero { padding: 15px 10px 15px 80px; }
+            .hero h1 { font-size: 1.5rem; }
+            .content-section h2 { font-size: 1.4rem; }
+            .section-card { padding: 20px 15px; }
+            .mobile-nav-item { font-size: 0.6rem; padding: 6px 2px; }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="school-logo" aria-label="Ephesus Elementary School - Home">
+        <img src="ephesus-logo.png" alt="Ephesus Elementary School Logo">
+    </a>
+
+    <section class="hero" id="hero">
+        <h1>Resources</h1>
+        <div class="description">
+            This page provides links to detailed information and supporting documents that underpin the five key points highlighted on our <a href="index.html" style="color: white; text-decoration: underline;">main page</a>. Use these resources to learn more and share with others.
+        </div>
+    </section>
+
+    <nav class="floating-nav">
+        <div class="nav-item active" data-section="walkability">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Walkability</div>
+        </div>
+        <div class="nav-item" data-section="housing">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Affordable Housing</div>
+        </div>
+        <div class="nav-item" data-section="title1">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Title 1 Status</div>
+        </div>
+        <div class="nav-item" data-section="growth">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Student Growth</div>
+        </div>
+        <div class="nav-item" data-section="expansion">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Land for Expansion</div>
+        </div>
+        <div class="nav-item" data-section="other">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Other Resources</div>
+        </div>
+        <div class="sidebar-photo">
+            <img src="Resources/Ephesus_alert.jpg" alt="Ephesus Elementary School Community">
+        </div>
+    </nav>
+
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item active" data-section="walkability">Walk</div>
+            <div class="mobile-nav-item" data-section="housing">Housing</div>
+            <div class="mobile-nav-item" data-section="title1">Title 1</div>
+            <div class="mobile-nav-item" data-section="growth">Growth</div>
+            <div class="mobile-nav-item" data-section="expansion">Land</div>
+            <div class="mobile-nav-item" data-section="other">Other</div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Buttons -->
+    <div class="sidebar-buttons">
+        <a href="index.html" class="sidebar-button">Home</a>
+        <a href="conversations.html" class="sidebar-button">Conversations</a>
+        <a href="resources.html" class="sidebar-button">Resources</a>
+    </div>
+
+    <section class="content-section" id="walkability">
+        <div class="section-card">
+            <div class="section-number">1</div>
+            <h2>Walkability & Accessibility</h2>
+            <p><a href="https://engage.chapelhillnc.gov/27005/widgets/102435/documents/72423" target="_blank">Safe Routes to School Action Plan 2025</a> visualizes Ephesus Elementary's unique geographic advantage for school aged children to walk or bike to school.</p>
+        </div>
+    </section>
+
+    <section class="content-section" id="housing">
+        <div class="section-card">
+            <div class="section-number">2</div>
+            <h2>Proximity to Affordable Housing</h2>
+            <p>Content for this section will be provided.</p>
+        </div>
+    </section>
+
+    <section class="content-section" id="title1">
+        <div class="section-card">
+            <div class="section-number">3</div>
+            <h2>Title 1 Status School</h2>
+            <p>Content for this section will be provided.</p>
+        </div>
+    </section>
+
+    <section class="content-section" id="growth">
+        <div class="section-card">
+            <div class="section-number">4</div>
+            <h2>Highest Student Growth Scores</h2>
+            <p>Content for this section will be provided.</p>
+        </div>
+    </section>
+
+    <section class="content-section" id="expansion">
+        <div class="section-card">
+            <div class="section-number">5</div>
+            <h2>Ample Land for Expansion</h2>
+            <p>Content for this section will be provided.</p>
+        </div>
+    </section>
+
+    <section class="content-section" id="other">
+        <div class="section-card">
+            <div class="section-number">6</div>
+            <h2>Other Resources</h2>
+            <p>Content for this section will be provided.</p>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('.content-section, .hero');
+        const navItems = document.querySelectorAll('.nav-item');
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = 'hero';
+            const viewportMid = window.innerHeight / 2;
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= viewportMid && rect.bottom >= viewportMid) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('data-section') === current);
+            });
+            mobileNavItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('data-section') === current);
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const el = document.getElementById(item.getAttribute('data-section'));
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const el = document.getElementById(item.getAttribute('data-section'));
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

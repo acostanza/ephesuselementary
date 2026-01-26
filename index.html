@@ -52,9 +52,10 @@
             position: fixed;
             left: 40px;
             top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
+            transform: translateY(-40%);
+            z-index: 2001;
             width: 200px;
+            padding-top: 40px;
         }
 
         .nav-item {
@@ -103,14 +104,14 @@
             color: #e6031b;
         }
 
-        /* Path line connecting dots */
-        .nav-item:not(:last-child)::after {
+        /* Path line connecting dots - exclude last nav item (expansion) */
+        .nav-item:not([data-section="expansion"])::after {
             content: '';
             position: absolute;
             left: 9px;
             top: 20px;
             width: 2px;
-            height: 60px;
+            height: calc(100% + 40px);
             background: repeating-linear-gradient(
                 to bottom,
                 #e6031b 0px,
@@ -119,6 +120,52 @@
                 transparent 16px
             );
             z-index: 1;
+        }
+
+        /* Sidebar Photo */
+        .sidebar-photo {
+            margin-top: 120px;
+            width: 100%;
+        }
+        
+        .sidebar-photo img {
+            width: 125%;
+            height: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* Sidebar Buttons */
+        .sidebar-buttons {
+            position: fixed;
+            left: 40px;
+            bottom: 0;
+            width: 200px;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            z-index: 1000;
+        }
+        
+        .sidebar-button {
+            background: white;
+            color: #e6031b;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.7425rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        
+        .sidebar-button:hover {
+            background: #e6031b;
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 3, 27, 0.3);
+            transform: translateY(-2px);
         }
 
         /* Content Sections */
@@ -338,6 +385,10 @@
             .floating-nav {
                 display: none;
             }
+            
+            .sidebar-buttons {
+                display: none;
+            }
 
             .mobile-nav {
                 display: block;
@@ -422,10 +473,6 @@
 
             .hero {
                 padding: 15px 10px 15px 80px;
-            }
-
-            .hero h1 {
-                font-size: 1.3rem;
             }
 
             .hero h1 {
@@ -554,7 +601,7 @@
         <button class="popup-close" id="closePopup" aria-label="Close notification">×</button>
         <h3 class="popup-heading">Did you Email the School Board Yet?</h3>
         <p class="popup-text">
-            Tell the School Board why Ephesus Elementary is important to YOU, and why investing in Ephesus is important! Need ideas? See our <a href="#conversation-starters">list of conversation starters here</a>.
+            Tell the School Board why Ephesus Elementary is important to <strong>YOU</strong>, and why investing in Ephesus is important! Need ideas? See our <a href="conversations.html">conversations page</a>.
         </p>
     </div>
 
@@ -589,6 +636,9 @@
             <div class="nav-dot"></div>
             <div class="nav-label">Land for Expansion</div>
         </div>
+        <div class="sidebar-photo">
+            <img src="Resources/Ephesus_alert.jpg" alt="Ephesus Elementary School Community">
+        </div>
     </nav>
 
     <!-- Mobile Navigation -->
@@ -602,6 +652,13 @@
         </div>
     </nav>
 
+    <!-- Sidebar Buttons -->
+    <div class="sidebar-buttons">
+        <a href="index.html" class="sidebar-button">Home</a>
+        <a href="conversations.html" class="sidebar-button">Conversations</a>
+        <a href="resources.html" class="sidebar-button">Resources</a>
+    </div>
+
     <!-- Section 1: Walkability -->
     <section class="content-section" id="walkability">
         <div class="section-card">
@@ -613,8 +670,9 @@
             <div class="highlight-box">
                 <h3>Benefits of Our Central Location</h3>
                 <ul>
-                    <li>TBD</li>
+                    <li>Ephesus has the highest number of kids in the district living within 1/2 a mile of the school.</li>
                 </ul>
+                <p style="margin-top: 1rem;">Resources: <a href="resources.html#walkability" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Safe Routes to School 2025</a></p>
             </div>
         </div>
     </section>
