@@ -295,6 +295,118 @@
             }
         }
 
+        /* School Logo */
+        .school-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            width: 120px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .school-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .school-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Popup Notification */
+        .popup-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(230, 3, 27, 0.25);
+            padding: 30px;
+            z-index: 3000;
+            border: 2px solid #e6031b;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .popup-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .popup-notification.hide {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: #e6031b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .popup-close:hover {
+            background: #b8020f;
+            transform: scale(1.1);
+        }
+
+        .popup-heading {
+            color: #e6031b;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-right: 20px;
+            line-height: 1.3;
+        }
+
+        .popup-text {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .popup-text a {
+            color: #e6031b;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .popup-text a:hover {
+            color: #b8020f;
+        }
+
+        @media (max-width: 480px) {
+            .popup-notification {
+                width: calc(100% - 40px);
+                right: 20px;
+                left: 20px;
+            }
+        }
+
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
@@ -302,6 +414,20 @@
     </style>
 </head>
 <body>
+    <!-- School Logo - Fixed Position -->
+    <div class="school-logo">
+        <img src="ephesus-logo.png" alt="Ephesus Elementary School Logo">
+    </div>
+
+    <!-- Popup Notification -->
+    <div class="popup-notification" id="emailPopup">
+        <button class="popup-close" id="closePopup" aria-label="Close notification">×</button>
+        <h3 class="popup-heading">Did you Email the School Board Yet?</h3>
+        <p class="popup-text">
+            Tell the School Board why Ephesus Elementary is important to YOU, and why investing in Ephesus is important! Need ideas? See our <a href="#conversation-starters">list of conversation starters here</a>.
+        </p>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <h1>Ephesus Elementary School</h1>
@@ -461,6 +587,23 @@
     </section>
 
     <script>
+        // Popup notification functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('emailPopup');
+            const closeBtn = document.getElementById('closePopup');
+            
+            // Show popup after a short delay
+            setTimeout(() => {
+                popup.classList.add('show');
+            }, 1000);
+            
+            // Close popup when X is clicked
+            closeBtn.addEventListener('click', () => {
+                popup.classList.remove('show');
+                popup.classList.add('hide');
+            });
+        });
+
         // Smooth scroll and navigation highlighting
         const sections = document.querySelectorAll('.content-section, .hero');
         const navItems = document.querySelectorAll('.nav-item');
