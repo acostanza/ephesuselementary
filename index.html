@@ -16,37 +16,35 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            background: #f5f5f5;
         }
 
-        /* Hero Section */
+        /* Hero Section - Compact Banner */
         .hero {
             background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
             color: white;
-            padding: 80px 20px 60px 280px;
+            padding: 40px 20px 40px 280px;
             text-align: left;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
         .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             opacity: 0.95;
         }
 
         .hero .description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             max-width: 700px;
             opacity: 0.9;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         /* Floating Navigation */
@@ -125,22 +123,50 @@
 
         /* Content Sections */
         .content-section {
-            min-height: 100vh;
-            padding: 100px 80px 100px 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: white;
+            padding: 60px 80px 60px 320px;
+            background: transparent;
         }
 
-        .content-section:nth-child(even) {
-            background: #f8f9fa;
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(230, 3, 27, 0.15);
+        }
+
+        /* Alternating subtle background colors */
+        .content-section:nth-child(3) .section-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        }
+
+        .content-section:nth-child(4) .section-card {
+            background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%);
+        }
+
+        .content-section:nth-child(5) .section-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f8fa 100%);
+        }
+
+        .content-section:nth-child(6) .section-card {
+            background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%);
+        }
+
+        .content-section:nth-child(7) .section-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9faf9 100%);
         }
 
         .content-section h2 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #e6031b;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 700;
         }
 
@@ -159,30 +185,27 @@
         }
 
         .content-section p {
-            font-size: 1.2rem;
-            line-height: 1.9;
+            font-size: 1.1rem;
+            line-height: 1.8;
             max-width: 800px;
             color: #555;
             margin-bottom: 20px;
         }
 
         .highlight-box {
-            background: white;
+            background: #fef9f9;
             border-left: 5px solid #e6031b;
             padding: 25px 30px;
             margin-top: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 10px;
             max-width: 800px;
-        }
-
-        .content-section:nth-child(even) .highlight-box {
-            background: white;
+            border: 1px solid #ffe0e0;
         }
 
         .highlight-box h3 {
             color: #e6031b;
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
         .highlight-box ul {
@@ -234,6 +257,15 @@
             opacity: 0.9;
         }
 
+        /* Section Divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e6031b, transparent);
+            margin: 0 auto 40px auto;
+            max-width: 300px;
+            opacity: 0.3;
+        }
+
         /* Responsive Design */
         @media (max-width: 968px) {
             .floating-nav {
@@ -246,12 +278,16 @@
                 padding-right: 40px;
             }
 
+            .section-card {
+                padding: 30px;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .content-section h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .stats {
@@ -301,117 +337,127 @@
 
     <!-- Section 1: Walkability -->
     <section class="content-section" id="walkability">
-        <div class="section-number">1</div>
-        <h2>Walkability & Accessibility</h2>
-        <p>
-            Ephesus Elementary is strategically located at the heart of the community, making it easily accessible for families in the neighborhood. This central location means fewer students need to be bussed to school, reducing transportation costs and environmental impact while strengthening community connections.
-        </p>
-        <div class="highlight-box">
-            <h3>Benefits of Our Central Location</h3>
-            <ul>
-                <li>Students can safely walk or bike to school</li>
-                <li>Reduced transportation costs for families and the district</li>
-                <li>Stronger parent involvement with easier access</li>
-                <li>Lower carbon footprint and environmental impact</li>
-                <li>Enhanced community engagement and local partnerships</li>
-            </ul>
+        <div class="section-card">
+            <div class="section-number">1</div>
+            <h2>Walkability & Accessibility</h2>
+            <p>
+                Ephesus Elementary is strategically located at the heart of the community, making it easily accessible for families in the neighborhood. This central location means fewer students need to be bussed to school, reducing transportation costs and environmental impact while strengthening community connections.
+            </p>
+            <div class="highlight-box">
+                <h3>Benefits of Our Central Location</h3>
+                <ul>
+                    <li>Students can safely walk or bike to school</li>
+                    <li>Reduced transportation costs for families and the district</li>
+                    <li>Stronger parent involvement with easier access</li>
+                    <li>Lower carbon footprint and environmental impact</li>
+                    <li>Enhanced community engagement and local partnerships</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- Section 2: Affordable Housing -->
     <section class="content-section" id="housing">
-        <div class="section-number">2</div>
-        <h2>Proximity to Affordable Housing</h2>
-        <p>
-            Located near affordable housing developments, Ephesus Elementary serves families across all economic backgrounds. Our commitment to accessibility ensures that quality education is available to everyone in our community, regardless of their economic circumstances.
-        </p>
-        <p>
-            This proximity allows working families to remain engaged in their children's education while maintaining their livelihoods, creating a sustainable model for community growth and stability.
-        </p>
-        <div class="highlight-box">
-            <h3>Supporting Working Families</h3>
-            <ul>
-                <li>Close to major affordable housing developments</li>
-                <li>Easy access for parents with varied work schedules</li>
-                <li>Community resources within walking distance</li>
-                <li>Partnerships with local family support services</li>
-            </ul>
+        <div class="section-card">
+            <div class="section-number">2</div>
+            <h2>Proximity to Affordable Housing</h2>
+            <p>
+                Located near affordable housing developments, Ephesus Elementary serves families across all economic backgrounds. Our commitment to accessibility ensures that quality education is available to everyone in our community, regardless of their economic circumstances.
+            </p>
+            <p>
+                This proximity allows working families to remain engaged in their children's education while maintaining their livelihoods, creating a sustainable model for community growth and stability.
+            </p>
+            <div class="highlight-box">
+                <h3>Supporting Working Families</h3>
+                <ul>
+                    <li>Close to major affordable housing developments</li>
+                    <li>Easy access for parents with varied work schedules</li>
+                    <li>Community resources within walking distance</li>
+                    <li>Partnerships with local family support services</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- Section 3: Title 1 Status -->
     <section class="content-section" id="title1">
-        <div class="section-number">3</div>
-        <h2>Title 1 Status School</h2>
-        <p>
-            As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
-        </p>
-        <div class="stats">
-            <div class="stat-card">
-                <span class="stat-number">38%</span>
-                <span class="stat-label">Free/Reduced Lunch</span>
+        <div class="section-card">
+            <div class="section-number">3</div>
+            <h2>Title 1 Status School</h2>
+            <p>
+                As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
+            </p>
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">38%</span>
+                    <span class="stat-label">Free/Reduced Lunch</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Commitment to Equity</span>
+                </div>
             </div>
-            <div class="stat-card">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Commitment to Equity</span>
+            <div class="highlight-box">
+                <h3>Title 1 Resources & Support</h3>
+                <ul>
+                    <li>Additional funding for educational programs</li>
+                    <li>Extended learning opportunities and tutoring</li>
+                    <li>Family engagement and support services</li>
+                    <li>Technology access for all students</li>
+                    <li>Professional development for teachers</li>
+                </ul>
             </div>
-        </div>
-        <div class="highlight-box">
-            <h3>Title 1 Resources & Support</h3>
-            <ul>
-                <li>Additional funding for educational programs</li>
-                <li>Extended learning opportunities and tutoring</li>
-                <li>Family engagement and support services</li>
-                <li>Technology access for all students</li>
-                <li>Professional development for teachers</li>
-            </ul>
         </div>
     </section>
 
     <!-- Section 4: Student Growth -->
     <section class="content-section" id="growth">
-        <div class="section-number">4</div>
-        <h2>Highest Student Growth Scores</h2>
-        <p>
-            We're proud to report the highest student growth scores in our district. This achievement reflects our dedicated teachers, supportive staff, and evidence-based instructional practices that meet every student where they are and help them reach their full potential.
-        </p>
-        <p>
-            Our commitment to individualized learning, coupled with robust intervention programs and enrichment opportunities, ensures that every child makes meaningful progress throughout the year.
-        </p>
-        <div class="highlight-box">
-            <h3>Our Success Factors</h3>
-            <ul>
-                <li>Data-driven instruction tailored to individual needs</li>
-                <li>Small group interventions and support</li>
-                <li>Highly qualified and dedicated teaching staff</li>
-                <li>Focus on social-emotional learning alongside academics</li>
-                <li>Strong partnerships between teachers, families, and specialists</li>
-                <li>Comprehensive support for students with special needs</li>
-            </ul>
+        <div class="section-card">
+            <div class="section-number">4</div>
+            <h2>Highest Student Growth Scores</h2>
+            <p>
+                We're proud to report the highest student growth scores in our district. This achievement reflects our dedicated teachers, supportive staff, and evidence-based instructional practices that meet every student where they are and help them reach their full potential.
+            </p>
+            <p>
+                Our commitment to individualized learning, coupled with robust intervention programs and enrichment opportunities, ensures that every child makes meaningful progress throughout the year.
+            </p>
+            <div class="highlight-box">
+                <h3>Our Success Factors</h3>
+                <ul>
+                    <li>Data-driven instruction tailored to individual needs</li>
+                    <li>Small group interventions and support</li>
+                    <li>Highly qualified and dedicated teaching staff</li>
+                    <li>Focus on social-emotional learning alongside academics</li>
+                    <li>Strong partnerships between teachers, families, and specialists</li>
+                    <li>Comprehensive support for students with special needs</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <!-- Section 5: Expansion -->
     <section class="content-section" id="expansion">
-        <div class="section-number">5</div>
-        <h2>Ample Land for Expansion</h2>
-        <p>
-            Looking toward the future, Ephesus Elementary sits on a spacious campus with ample land available for expansion. This provides the flexibility to grow alongside our community, adding facilities and programs as needed without relocating or compromising our central location.
-        </p>
-        <div class="highlight-box">
-            <h3>Future Growth Opportunities</h3>
-            <ul>
-                <li>Space for additional classrooms and learning centers</li>
-                <li>Potential for expanded athletic and recreational facilities</li>
-                <li>Room for community garden and outdoor learning spaces</li>
-                <li>Capacity to add before and after-school care facilities</li>
-                <li>Flexibility to accommodate growing enrollment</li>
-                <li>Opportunity for partnership with community organizations</li>
-            </ul>
+        <div class="section-card">
+            <div class="section-number">5</div>
+            <h2>Ample Land for Expansion</h2>
+            <p>
+                Looking toward the future, Ephesus Elementary sits on a spacious campus with ample land available for expansion. This provides the flexibility to grow alongside our community, adding facilities and programs as needed without relocating or compromising our central location.
+            </p>
+            <div class="highlight-box">
+                <h3>Future Growth Opportunities</h3>
+                <ul>
+                    <li>Space for additional classrooms and learning centers</li>
+                    <li>Potential for expanded athletic and recreational facilities</li>
+                    <li>Room for community garden and outdoor learning spaces</li>
+                    <li>Capacity to add before and after-school care facilities</li>
+                    <li>Flexibility to accommodate growing enrollment</li>
+                    <li>Opportunity for partnership with community organizations</li>
+                </ul>
+            </div>
+            <p style="margin-top: 30px; font-style: italic; color: #777;">
+                Ephesus Elementary School: Where community and education grow together, creating a brighter future for every child.
+            </p>
         </div>
-        <p style="margin-top: 30px; font-style: italic; color: #777;">
-            Ephesus Elementary School: Where community and education grow together, creating a brighter future for every child.
-        </p>
     </section>
 
     <script>
