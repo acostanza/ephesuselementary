@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ephesus Elementary School - Building Community, Nurturing Growth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
+            color: white;
+            padding: 80px 20px 60px 280px;
+            text-align: left;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            width: 200px;
+        }
+
+        .nav-item {
+            position: relative;
+            margin-bottom: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ddd;
+            border: 3px solid #e6031b;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .nav-item.active .nav-dot {
+            background: #e6031b;
+            transform: scale(1.3);
+        }
+
+        .nav-label {
+            padding-left: 35px;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active .nav-label {
+            color: #e6031b;
+            font-weight: 700;
+        }
+
+        .nav-item:hover .nav-label {
+            color: #e6031b;
+        }
+
+        /* Path line connecting dots */
+        .nav-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: 60px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #e6031b 0px,
+                #e6031b 8px,
+                transparent 8px,
+                transparent 16px
+            );
+            z-index: 1;
+        }
+
+        /* Content Sections */
+        .content-section {
+            min-height: 100vh;
+            padding: 100px 80px 100px 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+        }
+
+        .content-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .content-section h2 {
+            font-size: 2.8rem;
+            color: #e6031b;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .content-section .section-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #e6031b;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            max-width: 800px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: white;
+            border-left: 5px solid #e6031b;
+            padding: 25px 30px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            max-width: 800px;
+        }
+
+        .content-section:nth-child(even) .highlight-box {
+            background: white;
+        }
+
+        .highlight-box h3 {
+            color: #e6031b;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlight-box li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .highlight-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #e6031b;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Stats Display */
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: #e6031b;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(230, 3, 27, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .floating-nav {
+                display: none;
+            }
+
+            .hero,
+            .content-section {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <h1>Ephesus Elementary School</h1>
+        <div class="tagline">Building Community, Nurturing Growth</div>
+        <div class="description">
+            A welcoming, community-centric school where every child matters. We're committed to supporting families, embracing diversity, and providing exceptional education for all students, including those with special needs.
+        </div>
+    </section>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="nav-item active" data-section="walkability">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Walkability</div>
+        </div>
+        <div class="nav-item" data-section="housing">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Affordable Housing</div>
+        </div>
+        <div class="nav-item" data-section="title1">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Title 1 Status</div>
+        </div>
+        <div class="nav-item" data-section="growth">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Student Growth</div>
+        </div>
+        <div class="nav-item" data-section="expansion">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Land for Expansion</div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Walkability -->
+    <section class="content-section" id="walkability">
+        <div class="section-number">1</div>
+        <h2>Walkability & Accessibility</h2>
+        <p>
+            Ephesus Elementary is strategically located at the heart of the community, making it easily accessible for families in the neighborhood. This central location means fewer students need to be bussed to school, reducing transportation costs and environmental impact while strengthening community connections.
+        </p>
+        <div class="highlight-box">
+            <h3>Benefits of Our Central Location</h3>
+            <ul>
+                <li>Students can safely walk or bike to school</li>
+                <li>Reduced transportation costs for families and the district</li>
+                <li>Stronger parent involvement with easier access</li>
+                <li>Lower carbon footprint and environmental impact</li>
+                <li>Enhanced community engagement and local partnerships</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 2: Affordable Housing -->
+    <section class="content-section" id="housing">
+        <div class="section-number">2</div>
+        <h2>Proximity to Affordable Housing</h2>
+        <p>
+            Located near affordable housing developments, Ephesus Elementary serves families across all economic backgrounds. Our commitment to accessibility ensures that quality education is available to everyone in our community, regardless of their economic circumstances.
+        </p>
+        <p>
+            This proximity allows working families to remain engaged in their children's education while maintaining their livelihoods, creating a sustainable model for community growth and stability.
+        </p>
+        <div class="highlight-box">
+            <h3>Supporting Working Families</h3>
+            <ul>
+                <li>Close to major affordable housing developments</li>
+                <li>Easy access for parents with varied work schedules</li>
+                <li>Community resources within walking distance</li>
+                <li>Partnerships with local family support services</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 3: Title 1 Status -->
+    <section class="content-section" id="title1">
+        <div class="section-number">3</div>
+        <h2>Title 1 Status School</h2>
+        <p>
+            As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
+        </p>
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number">38%</span>
+                <span class="stat-label">Free/Reduced Lunch</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Commitment to Equity</span>
+            </div>
+        </div>
+        <div class="highlight-box">
+            <h3>Title 1 Resources & Support</h3>
+            <ul>
+                <li>Additional funding for educational programs</li>
+                <li>Extended learning opportunities and tutoring</li>
+                <li>Family engagement and support services</li>
+                <li>Technology access for all students</li>
+                <li>Professional development for teachers</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 4: Student Growth -->
+    <section class="content-section" id="growth">
+        <div class="section-number">4</div>
+        <h2>Highest Student Growth Scores</h2>
+        <p>
+            We're proud to report the highest student growth scores in our district. This achievement reflects our dedicated teachers, supportive staff, and evidence-based instructional practices that meet every student where they are and help them reach their full potential.
+        </p>
+        <p>
+            Our commitment to individualized learning, coupled with robust intervention programs and enrichment opportunities, ensures that every child makes meaningful progress throughout the year.
+        </p>
+        <div class="highlight-box">
+            <h3>Our Success Factors</h3>
+            <ul>
+                <li>Data-driven instruction tailored to individual needs</li>
+                <li>Small group interventions and support</li>
+                <li>Highly qualified and dedicated teaching staff</li>
+                <li>Focus on social-emotional learning alongside academics</li>
+                <li>Strong partnerships between teachers, families, and specialists</li>
+                <li>Comprehensive support for students with special needs</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 5: Expansion -->
+    <section class="content-section" id="expansion">
+        <div class="section-number">5</div>
+        <h2>Ample Land for Expansion</h2>
+        <p>
+            Looking toward the future, Ephesus Elementary sits on a spacious campus with ample land available for expansion. This provides the flexibility to grow alongside our community, adding facilities and programs as needed without relocating or compromising our central location.
+        </p>
+        <div class="highlight-box">
+            <h3>Future Growth Opportunities</h3>
+            <ul>
+                <li>Space for additional classrooms and learning centers</li>
+                <li>Potential for expanded athletic and recreational facilities</li>
+                <li>Room for community garden and outdoor learning spaces</li>
+                <li>Capacity to add before and after-school care facilities</li>
+                <li>Flexibility to accommodate growing enrollment</li>
+                <li>Opportunity for partnership with community organizations</li>
+            </ul>
+        </div>
+        <p style="margin-top: 30px; font-style: italic; color: #777;">
+            Ephesus Elementary School: Where community and education grow together, creating a brighter future for every child.
+        </p>
+    </section>
+
+    <script>
+        // Smooth scroll and navigation highlighting
+        const sections = document.querySelectorAll('.content-section, .hero');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        // Update active nav item on scroll
+        window.addEventListener('scroll', () => {
+            let current = 'hero';
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Click navigation
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
