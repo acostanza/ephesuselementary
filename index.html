@@ -174,7 +174,7 @@
             border-radius: 20px;
             padding: 50px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
+            margin-bottom: -40px; /* Controls the vertical spacing between content boxes (1, 2, 3, 4, 5) on desktop/larger screens */
             border: 1px solid #e0e0e0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -433,7 +433,7 @@
             }
 
             .content-section {
-                padding-bottom: 80px;
+                padding-bottom: -40x; /* Controls the vertical spacing between content boxes (1, 2, 3, 4, 5) on mobile/narrow screens */
             }
 
             .section-card {
@@ -604,7 +604,7 @@
 <body>
     <!-- School Logo - Fixed Position -->
     <div class="school-logo">
-        <img src="ephesus-logo.png" alt="Ephesus Elementary School Logo">
+        <img src="resources/ephesus-logo.png" alt="Ephesus Elementary School Logo">
     </div>
 
     <!-- Popup Notification -->
@@ -619,7 +619,7 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <h1>Ephesus Elementary</h1>
-        <div class="description">Building Community, Nurturing Growth <br>A welcoming, community-centric school where every child matters.</div>
+        <div class="description"><b>Building Community, Nurturing Growth</b> <br>A welcoming, community-centric school where every child matters.</div>
     </section>
 
     <!-- Floating Navigation -->
@@ -645,7 +645,7 @@
             <div class="nav-label">Land for Expansion</div>
         </div>
         <div class="sidebar-photo">
-            <img src="Resources/Ephesus_alert.jpg" alt="Ephesus Elementary School Community">
+            <img src="resources/Ephesus_alert.jpg" alt="Ephesus Elementary School Community">
         </div>
     </nav>
 
