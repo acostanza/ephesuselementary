@@ -382,7 +382,19 @@
             }
             
             .sidebar-buttons {
-                display: none;
+                position: fixed;
+                top: 200px;
+                bottom: auto;
+                left: auto;
+                right: 20px;
+                width: auto;
+                flex-direction: row;
+                gap: 8px;
+                z-index: 10002;
+            }
+            .sidebar-button {
+                padding: 4px 8px;
+                font-size: 0.65rem;
             }
 
             .mobile-nav {
@@ -397,7 +409,7 @@
             }
 
             .hero {
-                padding: 30px 20px 30px 130px;
+                padding: 30px 20px 60px 130px;
             }
 
             .content-section:first-of-type {

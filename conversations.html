@@ -220,10 +220,11 @@
         .mobile-nav-item:hover { background: #f8f9fa; }
         @media (max-width: 968px) {
             .floating-nav { display: none; }
-            .sidebar-buttons { display: none; }
+            .sidebar-buttons { position: fixed; top: 200px; right: 20px; left: auto; bottom: auto; width: auto; flex-direction: row; gap: 8px; z-index: 10002; }
+            .sidebar-button { padding: 4px 8px; font-size: 0.65rem; }
             .mobile-nav { display: block; }
             .school-logo { width: 80px; top: 10px; left: 10px; padding: 8px; }
-            .hero { padding: 30px 20px 30px 130px; }
+            .hero { padding: 30px 20px 60px 130px; }
             .content-section:first-of-type { margin-top: 200px; }
             .content-section { padding: 60px 20px 60px 20px; padding-bottom: 80px; }
             .section-card { padding: 25px 20px; }
