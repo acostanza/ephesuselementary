@@ -288,6 +288,11 @@
             box-shadow: 0 4px 15px rgba(230, 3, 27, 0.3);
         }
 
+        .stat-card-minority {
+            background: #f5c518;
+            color: #333;
+        }
+
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
@@ -600,6 +605,164 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Housing Development Graphic Styles */
+        .housing-graphic {
+            margin: 40px 0;
+        }
+
+        .housing-graphic .main-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .housing-graphic .stat-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .housing-graphic .stat-column.left {
+            align-items: flex-end;
+        }
+
+        .housing-graphic .stat-column.right {
+            align-items: flex-start;
+        }
+
+        .housing-graphic .stat-pill {
+            padding: 14px 22px;
+            border-radius: 50px;
+            text-align: center;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .housing-graphic .stat-pill.affordable {
+            background: #D32027;
+            color: #fff;
+            animation: slideFromLeft 0.5s ease-out 1.8s forwards;
+        }
+
+        .housing-graphic .stat-pill.units {
+            background: linear-gradient(135deg, #F5C518 0%, #E8B708 100%);
+            color: #333;
+            animation: slideFromRight 0.5s ease-out 2s forwards;
+        }
+
+        .housing-graphic .stat-pill-number {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .housing-graphic .stat-pill-label {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        .housing-graphic .chart-container {
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out 0.3s forwards;
+        }
+
+        .housing-graphic .chart-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .housing-graphic .chart-center-number {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 48px;
+            color: #2D2D2D;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .housing-graphic .chart-center-label {
+            font-size: 13px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .housing-graphic .legend {
+            display: flex;
+            justify-content: flex-start;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .housing-graphic .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+        }
+
+        .housing-graphic .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .housing-graphic .legend-text {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .housing-graphic .legend-text strong {
+            color: #2D2D2D;
+        }
+
+        .housing-graphic .planned-tag {
+            font-size: 9px;
+            font-weight: 700;
+            color: #B8860B;
+            background: #FFF8E7;
+            padding: 2px 6px;
+            border-radius: 8px;
+            margin-left: 4px;
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideFromLeft {
+            from { opacity: 0; transform: translateX(-25px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideFromRight {
+            from { opacity: 0; transform: translateX(25px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 750px) {
+            .housing-graphic .main-row {
+                flex-direction: column;
+            }
+            .housing-graphic .stat-column {
+                flex-direction: row;
+                align-items: center !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -697,10 +860,39 @@
             <p>
                 This proximity allows working families to remain engaged in their children's education while maintaining their livelihoods, creating a sustainable model for community growth and stability.
             </p>
+            
+            <div class="housing-graphic">
+                <div class="main-row">
+                    <div class="stat-column left">
+                        <div class="stat-pill affordable">
+                            <div class="stat-pill-number">42%</div>
+                            <div class="stat-pill-label">Affordable<br>Housing</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <svg id="housing-donut" width="280" height="280"></svg>
+                        <div class="chart-center">
+                            <div class="chart-center-number" id="housing-centerNumber">0</div>
+                            <div class="chart-center-label">total new and coming soon housing units</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-column right">
+                        <div class="stat-pill units">
+                            <div class="stat-pill-number">299</div>
+                            <div class="stat-pill-label">Affordable<br>Units</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="legend" id="housing-legend"></div>
+            </div>
+
             <div class="highlight-box">
                 <h3>Supporting Working Families</h3>
                 <ul>
-                    <li>TBD</li>
+                    <li>These families will need a neighborhood school</li>
                 </ul>
             </div>
         </div>
@@ -715,6 +907,10 @@
                 As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
             </p>
             <div class="stats">
+                <div class="stat-card stat-card-minority">
+                    <span class="stat-number" id="stat-50" data-target="50">0%</span>
+                    <span class="stat-label">Minority Enrollment</span>
+                </div>
                 <div class="stat-card">
                     <span class="stat-number" id="stat-38" data-target="38">0%</span>
                     <span class="stat-label">Free/Reduced Lunch</span>
@@ -767,6 +963,41 @@
     </section>
 
     <script>
+        // 50% stat count-up animation when Title 1 section reaches halfway up viewport
+        (function() {
+            const statEl = document.getElementById('stat-50');
+            const section = document.getElementById('title1');
+            if (!statEl || !section) return;
+
+            let animated = false;
+            const target = 50;
+            const duration = 2250;
+
+            function checkAndAnimate() {
+                if (animated) return;
+                const rect = section.getBoundingClientRect();
+                const viewportMid = window.innerHeight / 2;
+                if (rect.top <= viewportMid) {
+                    animated = true;
+                    let start = null;
+                    function step(timestamp) {
+                        if (!start) start = timestamp;
+                        const elapsed = timestamp - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 2);
+                        const value = Math.round(easeOut * target);
+                        statEl.textContent = value + '%';
+                        if (progress < 1) requestAnimationFrame(step);
+                        else statEl.textContent = target + '%';
+                    }
+                    requestAnimationFrame(step);
+                }
+            }
+
+            window.addEventListener('scroll', checkAndAnimate, { passive: true });
+            checkAndAnimate();
+        })();
+
         // 38% stat count-up animation when Title 1 section reaches halfway up viewport
         (function() {
             const statEl = document.getElementById('stat-38');
@@ -884,6 +1115,116 @@
                 }
             });
         });
+
+        // Housing Development Donut Chart Animation
+        (function() {
+            const data = [
+                { name: 'Greenfield', units: 149, type: 'Affordable', color: '#D32027' },
+                { name: 'Park Apartments', units: 414, type: 'Market Rate', color: '#7B1113' },
+                { name: 'Longleaf Trace', units: 150, type: 'Planned', color: '#F5C518', planned: true },
+            ];
+            
+            const totalWithPlanned = 713;
+            const size = 280;
+            const strokeWidth = 38;
+            const radius = (size - strokeWidth) / 2;
+            const circumference = 2 * Math.PI * radius;
+            const svg = document.getElementById('housing-donut');
+            const centerNumber = document.getElementById('housing-centerNumber');
+            const legend = document.getElementById('housing-legend');
+            
+            if (!svg || !centerNumber || !legend) return;
+            
+            // Create background circle
+            const bgCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            bgCircle.setAttribute('cx', size / 2);
+            bgCircle.setAttribute('cy', size / 2);
+            bgCircle.setAttribute('r', radius);
+            bgCircle.setAttribute('fill', 'none');
+            bgCircle.setAttribute('stroke', '#f0f0f0');
+            bgCircle.setAttribute('stroke-width', strokeWidth);
+            svg.appendChild(bgCircle);
+            
+            // Create segments
+            let currentOffset = 0;
+            data.forEach((segment, i) => {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', size / 2);
+                circle.setAttribute('cy', size / 2);
+                circle.setAttribute('r', radius);
+                circle.setAttribute('fill', 'none');
+                circle.setAttribute('stroke', segment.color);
+                circle.setAttribute('stroke-width', strokeWidth);
+                circle.setAttribute('stroke-linecap', 'round');
+                circle.setAttribute('transform', `rotate(-90 ${size/2} ${size/2})`);
+                
+                const segmentLength = (segment.units / totalWithPlanned) * circumference;
+                circle.style.strokeDasharray = `0 ${circumference}`;
+                circle.style.strokeDashoffset = -currentOffset;
+                circle.style.transition = 'stroke-dasharray 0.8s ease-out';
+                circle.dataset.target = segmentLength;
+                
+                svg.appendChild(circle);
+                currentOffset += segmentLength;
+            });
+            
+            // Create legend
+            data.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.className = 'legend-item';
+                div.innerHTML = `
+                    <div class="legend-dot" style="background: ${item.color};"></div>
+                    <div class="legend-text">
+                        <strong>${item.name}</strong> · ${item.units} units${item.planned ? '<span class="planned-tag">PLANNED</span>' : ''}
+                    </div>
+                `;
+                legend.appendChild(div);
+                
+                setTimeout(() => {
+                    div.style.opacity = '1';
+                    div.style.transition = 'opacity 0.4s ease-out';
+                }, 1800 + i * 150);
+            });
+            
+            // Animate chart when section is visible
+            const housingSection = document.getElementById('housing');
+            if (!housingSection) return;
+            
+            let animated = false;
+            function checkAndAnimate() {
+                if (animated) return;
+                const rect = housingSection.getBoundingClientRect();
+                const viewportMid = window.innerHeight / 2;
+                if (rect.top <= viewportMid) {
+                    animated = true;
+                    
+                    setTimeout(() => {
+                        const circles = svg.querySelectorAll('circle:not(:first-child)');
+                        circles.forEach((circle, i) => {
+                            setTimeout(() => {
+                                const target = parseFloat(circle.dataset.target);
+                                circle.style.strokeDasharray = `${target} ${circumference}`;
+                            }, i * 400);
+                        });
+                        
+                        // Animate center number
+                        const duration = 2000;
+                        const startTime = Date.now();
+                        const animate = () => {
+                            const elapsed = Date.now() - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            centerNumber.textContent = Math.round(totalWithPlanned * eased);
+                            if (progress < 1) requestAnimationFrame(animate);
+                        };
+                        animate();
+                    }, 800);
+                }
+            }
+            
+            window.addEventListener('scroll', checkAndAnimate, { passive: true });
+            checkAndAnimate();
+        })();
     </script>
 </body>
 </html>
