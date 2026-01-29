@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
-    <title>Ephesus Elementary School - Building Community, Nurturing Growth</title>
+    <title>Ephesus Elementary School</title>
     <style>
         * {
             margin: 0;
@@ -321,6 +321,11 @@
             color: #333;
         }
 
+        .stat-card-learn {
+            background: #6d1f19;
+            color: white;
+        }
+
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
@@ -634,6 +639,139 @@
             scroll-behavior: smooth;
         }
 
+        /* Compact Growth Chart Styles */
+        .growth-chart-container {
+            background: #ffffff;
+            padding: 15px 20px 20px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 550px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .growth-chart-header {
+            text-align: left;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUpChart 0.6s ease-out forwards;
+        }
+
+        .growth-chart-subtitle {
+            color: #b62d22;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        .growth-chart-title {
+            color: #1a1a1a;
+            font-size: 22px;
+            font-weight: 700;
+            display: none;
+        }
+
+        .growth-chart-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .growth-chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 45px;
+            align-items: center;
+            gap: 10px;
+            padding: 0px 10px;
+            margin-bottom: -1px;
+            border-radius: 0px;
+            border: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .growth-chart-row.top {
+            background: linear-gradient(135deg, rgba(182, 45, 34, 0.08) 0%, rgba(182, 45, 34, 0.03) 100%);
+            border: none;
+        }
+
+        .growth-school-name {
+            font-size: 1rem;
+            color: #555;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .growth-chart-row.top .growth-school-name {
+            color: #b62d22;
+            font-weight: 700;
+        }
+
+        .growth-bar-bg {
+            height: 14px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .growth-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            background: linear-gradient(90deg, #9ca3af 0%, #d1d5db 100%);
+        }
+
+        .growth-chart-row.top .growth-bar-fill {
+            background: linear-gradient(90deg, #b62d22, #d44535, #b62d22);
+            background-size: 200% 100%;
+            box-shadow: 0 0 10px rgba(182, 45, 34, 0.3);
+        }
+
+        .growth-score {
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: right;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .growth-chart-row.top .growth-score {
+            font-size: 1.1rem;
+            color: #b62d22;
+        }
+
+        .growth-chart-footer {
+            margin-top: 16px;
+            text-align: center;
+            opacity: 0;
+        }
+
+        .growth-chart-footer p {
+            color: rgba(0,0,0,0.4);
+            font-size: 11px;
+        }
+
+        @keyframes fadeUpChart {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInBar {
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes shimmerBar {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .growth-chart-row.top .growth-bar-fill.animated {
+            animation: shimmerBar 3s linear infinite;
+        }
+
         /* Housing Development Graphic Styles */
         .housing-graphic {
             margin: 40px 0;
@@ -682,6 +820,13 @@
             background: linear-gradient(135deg, #F5C518 0%, #E8B708 100%);
             color: #333;
             animation: slideFromRight 0.5s ease-out 2s forwards;
+            width: 158px;
+            height: 158px;
+            border-radius: 12px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .housing-graphic .stat-pill-number {
@@ -691,11 +836,32 @@
             line-height: 1;
         }
 
+        .housing-graphic .stat-pill.units .stat-pill-number {
+            font-size: 54px;
+            margin-bottom: 10px;
+        }
+
         .housing-graphic .stat-pill-label {
             font-size: 12px;
             font-weight: 600;
             line-height: 1.2;
             text-align: left;
+        }
+
+        .housing-graphic .stat-pill.units .stat-pill-label {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .housing-graphic .affordable-tag {
+            background: #4CAF50;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: 8px;
+            text-transform: uppercase;
         }
 
         .housing-graphic .chart-container {
@@ -804,14 +970,14 @@
         <button class="popup-close" id="closePopup" aria-label="Close notification">×</button>
         <h3 class="popup-heading">Did you Email the School Board Yet?</h3>
         <p class="popup-text">
-            Tell the School Board why Ephesus Elementary is important to <strong>YOU</strong>, and why investing in Ephesus is important! Need ideas? See our <a href="conversations.html">conversations page</a>.
+            Tell local leaders why Ephesus Elementary is important to <strong>YOU</strong>, and why investing in Ephesus is important! Need ideas? See our <a href="conversations.html">conversations page</a>.
         </p>
     </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <h1>Ephesus Elementary</h1>
-        <div class="description"><b>Building Community, Nurturing Growth</b> <br>A welcoming, community-centric school where every child matters.</div>
+        <div class="description">A Walkable School, Welcoming to All</div>
     </section>
 
     <!-- Floating Navigation -->
@@ -870,11 +1036,11 @@
             <div class="highlight-box">
                 <h3>Benefits of Our Central Location</h3>
                 <ul>
-                    <li>99 students live within half-mile walking distance (highest in district)</li>
+                    <li>99 students live within half-mile walking distance (highest in the CHCCS district)</li>
                     <li>80 students (20%) walk or bike daily (2<sup>nd</sup> highest in the district)</li>
                     <li>Many teachers and staff live in the neighborhood</li>
                 </ul>
-                <p style="margin-top: 1rem;">Resources: <a href="resources.html#walkability" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Safe Routes to School 2025</a></p>
+                <p style="margin-top: 1rem;">Resource: <a href="https://engage.chapelhillnc.gov/27005/widgets/102435/documents/72423"  target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Safe Routes to School Action Plan 2025</a></p>
             </div>
         </div>
     </section>
@@ -885,16 +1051,20 @@
             <div class="section-number">2</div>
             <h2>Essential Support for All Students</h2>
             <p>
-                As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
+                We're committed to cultivating a community where all students are welcome. As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to be successful.
             </p>
             <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="stat-38" data-target="38">0%</span>
+                    <span class="stat-label">Free/Reduced Lunch</span>
+                </div>
                 <div class="stat-card stat-card-minority">
                     <span class="stat-number" id="stat-50" data-target="50">0%</span>
                     <span class="stat-label">Minority Enrollment</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="stat-38" data-target="38">0%</span>
-                    <span class="stat-label">Free/Reduced Lunch</span>
+                <div class="stat-card stat-card-learn">
+                    <span class="stat-number" id="stat-98" data-target="98">0%</span>
+                    <span class="stat-label">Say Ephesus is a good place to learn</span>
                 </div>
             </div>
             <div class="highlight-box">
@@ -914,13 +1084,25 @@
             <div class="section-number">3</div>
             <h2>#1 in Academic Growth District-Wide</h2>
             <p>
-                As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
+                We've had the strongest student academic growth of any school in the district, showing that students of many backgrounds can thrive at Ephesus.
             </p>
+            
+            <div class="growth-chart-container">
+                <div class="growth-chart-header">
+                    <p class="growth-chart-subtitle">Academic Growth Scores 2024-25</p>
+                </div>
+                <div class="growth-chart-rows" id="growthChartRows"></div>
+            </div>
+            
             <div class="highlight-box">
-                <h3>Title 1 Resources & Support</h3>
+                <h3>Key Points:</h3>
                 <ul>
-                    <li>TBD</li>
+                    <li>90.2 growth score — highest in Chapel Hill-Carrboro (2024-25)</li>
+                    <li>Met or exceeded growth in every demographic category</li>
+                    <li>Exceeded growth in math; narrowly missed in reading (by 0.02)</li>
+                    <li>3-year high in students with disabilities showing proficiency on grade level assessments (EOGs)</li>
                 </ul>
+                <p style="margin-top: 1rem;">Resource: <a href="https://ncreports.ondemand.sas.com/src/" target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">North Carolina School Report Cards</a></p>
             </div>
         </div>
     </section>
@@ -931,32 +1113,22 @@
             <div class="section-number">4</div>
             <h2>Strategic Location for Chapel Hill's Future</h2>
             <p>
-                Located near affordable housing developments, Ephesus Elementary serves families across all economic backgrounds. Our commitment to accessibility ensures that quality education is available to everyone in our community, regardless of their economic circumstances.
-            </p>
-            <p>
-                This proximity allows working families to remain engaged in their children's education while maintaining their livelihoods, creating a sustainable model for community growth and stability.
+                Ephesus sits near new and planned development including several affordable housing developments, serving families from all backgrounds. Our location offers better traffic distribution than the Estes corridor and has unused open space for campus expansion when needed. This strategic location helps working parents stay connected to their kids' education and keeps our community together.
             </p>
             
             <div class="housing-graphic">
                 <div class="main-row">
-                    <div class="stat-column left">
-                        <div class="stat-pill affordable">
-                            <div class="stat-pill-number">42%</div>
-                            <div class="stat-pill-label">Affordable<br>Housing</div>
-                        </div>
-                    </div>
-                    
                     <div class="chart-container">
                         <svg id="housing-donut" width="280" height="280"></svg>
                         <div class="chart-center">
                             <div class="chart-center-number" id="housing-centerNumber">0</div>
-                            <div class="chart-center-label">Total new and coming soon housing units</div>
+                            <div class="chart-center-label">Total new and planned housing units</div>
                         </div>
                     </div>
                     
                     <div class="stat-column right">
                         <div class="stat-pill units">
-                            <div class="stat-pill-number">299</div>
+                            <div class="stat-pill-number">197</div>
                             <div class="stat-pill-label">Affordable<br>Units</div>
                         </div>
                     </div>
@@ -966,10 +1138,14 @@
             </div>
 
             <div class="highlight-box">
-                <h3>Supporting Working Families</h3>
+                <h3>Highlights</h3>
                 <ul>
-                    <li>These families will need a neighborhood school</li>
+                    <li>Surrounded by high-density, mixed-use zoning</li>
+                    <li>Multiple affordable housing developments nearby</li>
+                    <li>Better traffic distribution than Estes corridor</li>
+                    <li>Unused open space available for campus expansion</li>
                 </ul>
+                <p style="margin-top: 1rem;">Resource: <a href="https://opendata-townofchapelhill.hub.arcgis.com/documents/chapel-hill-zoning-map/about" target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Town of Chapel Hill Zoning Map</a></p>
             </div>
         </div>
     </section>
@@ -979,16 +1155,15 @@
         <div class="section-card">
             <div class="section-number">5</div>
             <h2>Ephesus Is a Solution for the Future</h2>
-            <p>Placeholder text is right here.</p>
+            <p>Ephesus is a walkable school that is welcoming to all in our community and nurtures success for all students.</p>
             <div class="highlight-box">
-                <h3>Key points</h3>
+                <h3>A future with Ephesus means:</h3>
                 <ul>
-                    <li>Room to grow, both in terms of open space on campus to build, and unused classroom space in the current building</li>
-                    <li>No plan for relocating EC Pre-K teachers and students</li>
-                    <li>Increased busing costs if walk-zone families redistricted</li>
-                    <li>Loss of Title I intervention support for at-risk students</li>
-                    <li>Fragmentation of specialized programs and community ties</li>
-                    <li>Other schools at capacity — where would students go?</li>
+                    <li>Strong Title I intervention support for at-risk students</li>
+                    <li>Maintaining walkability and fewer buses, saving money compared to potential redistricting</li>
+                    <li>A hub for EC Pre-K teachers and students</li>
+                    <li>Promoting strong community ties and consolidating specialized programs</li>
+                    <li>Room to grow in its current location: ample open space on campus to build and unused classroom space</li>
                 </ul>
             </div>
         </div>
@@ -1046,6 +1221,41 @@
 
             let animated = false;
             const target = 38;
+            const duration = 2250;
+
+            function checkAndAnimate() {
+                if (animated) return;
+                const rect = section.getBoundingClientRect();
+                const viewportMid = window.innerHeight / 2;
+                if (rect.top <= viewportMid) {
+                    animated = true;
+                    let start = null;
+                    function step(timestamp) {
+                        if (!start) start = timestamp;
+                        const elapsed = timestamp - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 2);
+                        const value = Math.round(easeOut * target);
+                        statEl.textContent = value + '%';
+                        if (progress < 1) requestAnimationFrame(step);
+                        else statEl.textContent = target + '%';
+                    }
+                    requestAnimationFrame(step);
+                }
+            }
+
+            window.addEventListener('scroll', checkAndAnimate, { passive: true });
+            checkAndAnimate();
+        })();
+
+        // 98% stat count-up animation when Title 1 section reaches halfway up viewport
+        (function() {
+            const statEl = document.getElementById('stat-98');
+            const section = document.getElementById('supporting-students');
+            if (!statEl || !section) return;
+
+            let animated = false;
+            const target = 98;
             const duration = 2250;
 
             function checkAndAnimate() {
@@ -1159,12 +1369,12 @@
         // Housing Development Donut Chart Animation
         (function() {
             const data = [
-                { name: 'Greenfield', units: 149, type: 'Affordable', color: '#D32027' },
                 { name: 'Park Apartments', units: 414, type: 'Market Rate', color: '#7B1113' },
-                { name: 'Longleaf Trace', units: 150, type: 'Planned', color: '#F5C518', planned: true },
+                { name: 'Greenfield', units: 149, type: 'Affordable', color: '#D32027', affordable: true },
+                { name: 'Longleaf Trace', units: 48, type: 'Affordable (Planned)', color: '#F5C518', planned: true, affordable: true },
             ];
             
-            const totalWithPlanned = 713;
+            const totalWithPlanned = 611;
             const size = 280;
             const strokeWidth = 38;
             const radius = (size - strokeWidth) / 2;
@@ -1215,7 +1425,7 @@
                 div.innerHTML = `
                     <div class="legend-dot" style="background: ${item.color};"></div>
                     <div class="legend-text">
-                        <strong>${item.name}</strong> · ${item.units} units${item.planned ? '<span class="planned-tag">PLANNED</span>' : ''}
+                        <strong>${item.name}</strong> · ${item.units} units${item.affordable ? '<span class="affordable-tag">AFFORDABLE</span>' : ''}${item.planned ? '<span class="planned-tag">PLANNED</span>' : ''}
                     </div>
                 `;
                 legend.appendChild(div);
@@ -1264,6 +1474,47 @@
             
             window.addEventListener('scroll', checkAndAnimate, { passive: true });
             checkAndAnimate();
+        })();
+
+        // Growth Chart Bar Animation
+        (function() {
+            const schools = [
+                { name: 'Ephesus', score: 90.2, isTop: true },
+                { name: 'Carrboro', score: 87.5 },
+                { name: 'FPG', score: 86.0 },
+                { name: 'Glenwood', score: 82.2 },
+                { name: 'Seawell', score: 81.1 },
+                { name: 'Rashkis', score: 80.5 },
+                { name: 'Morris Grove', score: 80.5 },
+                { name: 'Northside', score: 80.4 },
+                { name: 'Estes Hills', score: 76.7 },
+                { name: 'McDougle', score: 76.2 },
+                { name: 'Scroggs', score: 73.9 },
+            ];
+
+            const container = document.getElementById('growthChartRows');
+            
+            if (!container) return;
+
+            schools.forEach((school, index) => {
+                const row = document.createElement('div');
+                row.className = 'growth-chart-row' + (school.isTop ? ' top' : '');
+                row.innerHTML = `
+                    <span class="growth-school-name">${school.name}</span>
+                    <div class="growth-bar-bg"><div class="growth-bar-fill" style="width: ${school.score}%"></div></div>
+                    <span class="growth-score">${school.score.toFixed(1)}</span>
+                `;
+                container.appendChild(row);
+
+                setTimeout(() => { row.style.animation = 'fadeUpChart 0.5s ease-out forwards'; }, 200 + index * 50);
+                
+                const bar = row.querySelector('.growth-bar-fill');
+                setTimeout(() => { bar.style.animation = 'slideInBar 0.8s ease-out forwards'; }, 400 + index * 50);
+
+                if (school.isTop) {
+                    setTimeout(() => { bar.classList.add('animated'); }, 1500);
+                }
+            });
         })();
     </script>
 </body>
