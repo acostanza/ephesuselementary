@@ -11,8 +11,9 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
-            background: #f5f5f5;
-            padding-top: 176px;
+            background: white;
+            padding-top: 148px; /* tight to hero - no grey gap */
+            padding-bottom: 100px;
         }
         .hero {
             background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
@@ -26,6 +27,9 @@
             right: 0;
             z-index: 9999;
             width: 100%;
+            height: 150px;
+            min-height: 150px;
+            box-sizing: border-box;
         }
         .hero h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; }
         .hero .description { font-size: 1.05rem; max-width: 800px; opacity: 0.95; line-height: 1.7; }
@@ -98,12 +102,13 @@
             height: auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
-        /* Sidebar Buttons */
+
+        /* Sidebar Buttons - same as index page */
         .sidebar-buttons {
             position: fixed;
-            left: 20px;
-            bottom: 20px;
-            width: auto;
+            left: 40px;
+            bottom: 0;
+            width: 200px;
             display: flex;
             flex-direction: row;
             gap: 8px;
@@ -129,30 +134,25 @@
             box-shadow: 0 4px 15px rgba(230, 3, 27, 0.3);
             transform: translateY(-2px);
         }
+
         .content-section {
             padding: 60px 0;
-            background: #f5f5f5;
+            background: white;
             width: 100%;
         }
         .content-section:first-of-type {
-            margin-top: 0px;
+            margin-top: 0;
+            padding-top: 0;
         }
         .section-card {
             background: white;
             border-radius: 0;
             padding: 60px 160px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: none;
             margin-bottom: 0;
             border: none;
-            border-top: 1px solid #e0e0e0;
             transition: none;
         }
-        .content-section:nth-child(2) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); }
-        .content-section:nth-child(3) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
-        .content-section:nth-child(4) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f5f8fa 100%); }
-        .content-section:nth-child(5) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
-        .content-section:nth-child(6) .section-card { background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); }
-        .content-section:nth-child(7) .section-card { background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%); }
         .content-section h2 { font-size: 2.5rem; color: #e6031b; margin-bottom: 25px; font-weight: 700; }
         .content-section .section-number {
             display: inline-block;
@@ -171,13 +171,46 @@
         .content-section a { color: #e6031b; text-decoration: underline; font-weight: 600; }
         .content-section .align-list-with-text { margin-left: -0.2em; padding-left: 1.25em; }
         .content-section a:hover { color: #b8020f; }
+
+        /* Static Footer - fixed at bottom of viewport */
+        .resources-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
+            color: white;
+            text-align: center;
+            padding: 25px 20px 25px 20px;
+            z-index: 9998;
+        }
+        .resources-footer-text {
+            margin: 0 0 20px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+            top: -4px;
+        }
+        .resources-footer-text a {
+            color: white !important;
+            text-decoration: underline !important;
+            font-weight: 600;
+        }
+        .resources-footer-text a:hover {
+            opacity: 0.9;
+        }
+
         @media (max-width: 968px) {
-            .sidebar-buttons { top: 168px; right: 10px; left: auto; bottom: auto; }
+            body { padding-top: 180px; }
+            .sidebar-buttons { position: fixed; top: 168px; left: auto; right: 10px; bottom: auto; width: auto; }
             .sidebar-button { padding: 5px 10px; font-size: 0.65rem; }
+            .resources-footer { padding: 16px 16px 12px 16px; }
+            .resources-footer-text { font-size: 0.9rem; margin-bottom: 12px; }
             .school-logo { width: 70px; top: 10px; left: 10px; padding: 6px; }
             .hero { padding: 20px 20px 20px 100px; height: 180px; min-height: 180px; max-height: 180px; box-sizing: border-box; overflow: hidden; }
             .hero .description { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
             .content-section { padding: 40px 0; }
+            .content-section:first-of-type { padding-top: 0; }
             .section-card { padding: 40px 20px; }
             .hero h1 { font-size: 1.8rem; }
             .hero .description { font-size: 0.9rem; }
@@ -206,7 +239,7 @@
         </div>
     </section>
 
-    <!-- Sidebar Buttons -->
+    <!-- Sidebar Buttons - same as index page -->
     <div class="sidebar-buttons">
         <a href="index.html" class="sidebar-button">Home</a>
         <a href="conversations.html" class="sidebar-button">Conversations</a>
@@ -240,6 +273,10 @@
             </ul>
         </div>
     </section>
+
+    <footer class="resources-footer">
+        <p class="resources-footer-text">Ephesus Elementary Needs Your Support! Go to our <a href="conversations.html">Conversations page</a> to find out how to tell local leaders why Ephesus Elementary is important to you!</p>
+    </footer>
 
     <script>
 </body>

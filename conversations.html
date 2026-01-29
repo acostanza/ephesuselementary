@@ -13,7 +13,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             background: #f5f5f5;
-            padding-top: 176px;
+            padding-top: 194px;
         }
         .hero {
             background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%);
@@ -27,12 +27,32 @@
             right: 0;
             z-index: 1000;
             width: 100%;
+            height: 150px;
+            min-height: 150px;
+            box-sizing: border-box;
         }
         .content-section:first-of-type {
             margin-top: 0px;
         }
         .hero h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; }
         .hero .description { font-size: 1.05rem; max-width: 800px; opacity: 0.95; line-height: 1.7; }
+
+        /* Thin CTA banner - fixed directly below header, no gap */
+        .cta-banner {
+            position: fixed;
+            top: 150px;
+            left: 0;
+            right: 0;
+            background: #EA9B95;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 1.15rem;
+            font-weight: 400;
+            z-index: 999;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
         .school-logo {
             position: fixed;
             top: 20px;
@@ -53,7 +73,7 @@
         .floating-nav {
             position: fixed;
             left: 40px;
-            top: 236px;
+            top: 262px;
             z-index: 10000;
             width: 200px;
         }
@@ -220,6 +240,8 @@
         .mobile-nav-item.active { background: #fef9f9; color: #e6031b; font-weight: 700; }
         .mobile-nav-item:hover { background: #f8f9fa; }
         @media (max-width: 968px) {
+            .cta-banner { top: 180px; padding: 8px 15px; font-size: 1rem; font-weight: 400; }
+            body { padding-top: 250px; }
             .floating-nav { display: none; }
             .sidebar-buttons { position: fixed; top: 168px; left: auto; right: 10px; bottom: auto; width: auto; flex-direction: row; gap: 6px; z-index: 10002; }
             .sidebar-button { padding: 5px 10px; font-size: 0.65rem; }
@@ -236,6 +258,8 @@
             .content-section p { font-size: 1rem; }
         }
         @media (max-width: 480px) {
+            .cta-banner { top: 160px; padding: 6px 12px; font-size: 0.95rem; font-weight: 400; }
+            body { padding-top: 230px; }
             .school-logo { width: 50px; top: 8px; left: 8px; padding: 5px; }
             .hero { padding: 15px 10px 15px 80px; }
             .content-section:first-of-type { margin-top: 160px; }
@@ -256,6 +280,10 @@
         <h1>Conversation Ideas</h1>
         <div class="description">Use the resources below to start the conversation with school and town leaders.</div>
     </section>
+
+    <div class="cta-banner">
+        Ephesus Elementary is on a short list for potential closure because of high building repair costs. Decisions are being made now - <strong>make your voice heard now!</strong>
+    </div>
 
     <nav class="floating-nav">
         <div class="nav-item active" data-section="leadership">
@@ -299,6 +327,7 @@
         <div class="section-card">
             <div class="section-number">1</div>
             <h2>School District Leadership</h2>
+            <p style="margin-bottom: 1rem;">You can use the School Board's <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC4gQvM0XvRQO58YvofGGtmHmwwDC_Inufh8gvyEXBORasKg/viewform" target="_blank" rel="noopener noreferrer">Consideration of Possible School Closures Form</a> for comments you may have on this topic. Direct emails and calls are also effective communication vehicles. Share with your community members, friends and family. <strong>Make your voice heard!</strong></p>
             <p style="margin-bottom: 1.25rem;">Chapel Hill–Carrboro City Schools leadership contacts:</p>
             <ul style="list-style: none; padding: 0; max-width: 800px;">
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Dr. Rodney Trice</strong>, Superintendent — <a href="mailto:superintendent@chccs.k12.nc.us">superintendent@chccs.k12.nc.us</a></li>
@@ -393,12 +422,16 @@ Sincerely,
 
             <h3 style="font-size: 1.35rem; color: #333; margin: 1.5rem 0 0.75rem 0;">Town of Chapel Hill Leadership</h3>
             <ul style="list-style: none; padding: 0; max-width: 800px;">
-                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jessica Anderson</strong>, Chapel Hill Mayor — <a href="mailto:janderson@townofchapelhill.org">janderson@townofchapelhill.org</a> — 919-968-2714</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Jessica Anderson</strong>, <a href="https://www.chapelhillnc.gov/Elected-officials/Mayor" target="_blank" rel="noopener noreferrer">Chapel Hill Mayor</a> — <a href="mailto:janderson@townofchapelhill.org">janderson@townofchapelhill.org</a> — 919-968-2714</li>
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Camille Berry</strong>, Mayor Pro Tem — <a href="mailto:cberry@townofchapelhill.org">cberry@townofchapelhill.org</a> — 919-960-1188</li>
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Amy Ryan</strong>, Council Member — <a href="mailto:aryan@townofchapelhill.org">aryan@townofchapelhill.org</a> — 919-590-5772</li>
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Melissa McCullough</strong>, Council Member — <a href="mailto:mmccullough@townofchapelhill.org">mmccullough@townofchapelhill.org</a> — 919-357-0333</li>
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Wes McMahon</strong>, Council Member — <a href="mailto:wmcmahon@townofchapelhill.org">wmcmahon@townofchapelhill.org</a> — 984-208-6953</li>
-                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Emily Holt</strong>, Council Member / Affordable Housing — <a href="mailto:eholt@townofchapelhill.org">eholt@townofchapelhill.org</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Paris Miller-Foushee</strong>, Council Member — <a href="mailto:pmiller-foushee@townofchapelhill.org">pmiller-foushee@townofchapelhill.org</a> — 919-348-9726</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Theodore Nollert</strong>, Council Member — <a href="mailto:tnollert@townofchapelhill.org">tnollert@townofchapelhill.org</a> — 919-537-9268</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Louie Rivers III</strong>, Council Member — <a href="mailto:lrivers@townofchapelhill.org">lrivers@townofchapelhill.org</a></li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Elizabeth Sharp</strong>, Council Member — <a href="mailto:esharp@townofchapelhill.org">esharp@townofchapelhill.org</a> — 415-632-8225</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Emily Holt</strong>, <a href="https://www.chapelhillaffordablehousing.org/our-team" target="_blank" rel="noopener noreferrer">Affordable Housing</a> — <a href="mailto:eholt@townofchapelhill.org">eholt@townofchapelhill.org</a> — 919-969-5058</li>
             </ul>
         </div>
     </section>
