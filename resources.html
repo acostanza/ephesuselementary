@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
     <title>Resources - Ephesus Elementary School</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -176,6 +175,7 @@
         }
         .content-section p { font-size: 1.1rem; line-height: 1.8; max-width: 800px; color: #555; margin-bottom: 20px; }
         .content-section a { color: #e6031b; text-decoration: underline; font-weight: 600; }
+        .content-section .align-list-with-text { margin-left: -0.2em; padding-left: 1.25em; }
         .content-section a:hover { color: #b8020f; }
         .mobile-nav {
             display: none;
@@ -247,25 +247,25 @@
             <div class="nav-dot"></div>
             <div class="nav-label">Walkability</div>
         </div>
-        <div class="nav-item" data-section="housing">
+        <div class="nav-item" data-section="supporting-students">
             <div class="nav-dot"></div>
-            <div class="nav-label">Affordable Housing</div>
+            <div class="nav-label">Supporting Students</div>
         </div>
-        <div class="nav-item" data-section="title1">
+        <div class="nav-item" data-section="academic-growth">
             <div class="nav-dot"></div>
-            <div class="nav-label">Title 1 Status</div>
+            <div class="nav-label">Academic Growth</div>
         </div>
-        <div class="nav-item" data-section="growth">
+        <div class="nav-item" data-section="strategic-location">
             <div class="nav-dot"></div>
-            <div class="nav-label">Student Growth</div>
+            <div class="nav-label">Strategic Location</div>
         </div>
-        <div class="nav-item" data-section="expansion">
+        <div class="nav-item" data-section="smart-solution">
             <div class="nav-dot"></div>
-            <div class="nav-label">Land for Expansion</div>
+            <div class="nav-label">Smart Solution</div>
         </div>
         <div class="nav-item" data-section="other">
             <div class="nav-dot"></div>
-            <div class="nav-label">Other Resources</div>
+            <div class="nav-label">Other</div>
         </div>
         <div class="sidebar-photo">
             <img src="resources/ephesus_alert.jpg" alt="Ephesus Elementary School Community" loading="lazy">
@@ -293,39 +293,42 @@
     <section class="content-section" id="walkability">
         <div class="section-card">
             <div class="section-number">1</div>
-            <h2>Walkability & Accessibility</h2>
+            <h2>Walkability</h2>
             <p><a href="https://engage.chapelhillnc.gov/27005/widgets/102435/documents/72423" target="_blank">Safe Routes to School Action Plan 2025</a> visualizes Ephesus Elementary's unique geographic advantage for school aged children to walk or bike to school.</p>
         </div>
     </section>
 
-    <section class="content-section" id="housing">
+    <section class="content-section" id="supporting-students">
         <div class="section-card">
             <div class="section-number">2</div>
-            <h2>Proximity to Affordable Housing</h2>
+            <h2>Supporting Students</h2>
             <p>Content for this section will be provided.</p>
         </div>
     </section>
 
-    <section class="content-section" id="title1">
+    <section class="content-section" id="academic-growth">
         <div class="section-card">
             <div class="section-number">3</div>
-            <h2>Title 1 Status School</h2>
+            <h2>Academic Growth</h2>
             <p>Content for this section will be provided.</p>
         </div>
     </section>
 
-    <section class="content-section" id="growth">
+    <section class="content-section" id="strategic-location">
         <div class="section-card">
             <div class="section-number">4</div>
-            <h2>Highest Student Growth Scores</h2>
-            <p>Content for this section will be provided.</p>
+            <h2>Strategic Location</h2>
+            <p>Location resources:</p>
+            <ul class="align-list-with-text">
+                <li><a href="https://opendata-townofchapelhill.hub.arcgis.com/documents/chapel-hill-zoning-map/about" target="_blank" rel="noopener noreferrer">Town of Chapel Hill Land Use Map</a></li>
+            </ul>
         </div>
     </section>
 
-    <section class="content-section" id="expansion">
+    <section class="content-section" id="smart-solution">
         <div class="section-card">
             <div class="section-number">5</div>
-            <h2>Ample Land for Expansion</h2>
+            <h2>Smart Solution</h2>
             <p>Content for this section will be provided.</p>
         </div>
     </section>
@@ -333,8 +336,8 @@
     <section class="content-section" id="other">
         <div class="section-card">
             <div class="section-number">6</div>
-            <h2>Other Resources</h2>
-            <ul>
+            <h2>Other</h2>
+            <ul class="align-list-with-text">
                 <li><a href="https://resources.finalsite.net/images/v1741777051/orangecountyfirstcom/rt6uhff3svp4zwognycu/Woolpert-OCStateofSchoolsReport.pdf" target="_blank">Woolpert State of Facilities Report 2023</a></li>
                 <li><a href="https://www.orangecountyfirst.com/our-district-main/2024-school-bond-referendum" target="_blank">Orange County School Bond Project Updates</a></li>
                 <li><a href="https://app.powerbi.com/view?r=eyJrIjoiZmM3NzAwYTQtM2EwMC00YzAzLWJiMzQtZGFiNTFjNDRjYjNlIiwidCI6ImMyN2U1NDlkLTUyMzEtNDJjYS1hNmM2LTliNWM0Yzg0NzgwOCJ9&pageName=ReportSection819e116ccf90a6eb8b5c" target="_blank">CHCCS School Data Profiles</a></li>
@@ -366,8 +369,11 @@
         window.dispatchEvent(new Event('scroll'));
 
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const el = document.getElementById(item.getAttribute('data-section'));
+            item.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                const sectionId = item.getAttribute('data-section');
+                const el = document.getElementById(sectionId);
                 if (el) {
                     const headerOffset = 200;
                     const elementPosition = el.getBoundingClientRect().top;
@@ -377,8 +383,11 @@
             });
         });
         mobileNavItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const el = document.getElementById(item.getAttribute('data-section'));
+            item.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                const sectionId = item.getAttribute('data-section');
+                const el = document.getElementById(sectionId);
                 if (el) {
                     const headerOffset = 200;
                     const elementPosition = el.getBoundingClientRect().top;

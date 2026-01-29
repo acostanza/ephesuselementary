@@ -98,8 +98,8 @@
             color: #e6031b;
         }
 
-        /* Path line connecting dots - exclude last nav item (expansion) */
-        .nav-item:not([data-section="expansion"])::after {
+        /* Path line connecting dots - exclude last nav item (smart-solution) */
+        .nav-item:not([data-section="smart-solution"])::after {
             content: '';
             position: absolute;
             left: 9px;
@@ -269,6 +269,34 @@
             color: #e6031b;
             font-weight: bold;
             font-size: 1.2rem;
+        }
+
+        /* Call to Action Card */
+        .cta-card {
+            background: linear-gradient(135deg, #e6031b 0%, #b8020f 100%) !important;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-card h2 {
+            color: white !important;
+        }
+        
+        .cta-card p {
+            color: white !important;
+            opacity: 0.95;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .cta-card a {
+            color: white;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .cta-card a:hover {
+            opacity: 0.8;
         }
 
         /* Stats Display */
@@ -792,21 +820,21 @@
             <div class="nav-dot"></div>
             <div class="nav-label">Walkability</div>
         </div>
-        <div class="nav-item" data-section="housing">
+        <div class="nav-item" data-section="supporting-students">
             <div class="nav-dot"></div>
-            <div class="nav-label">Affordable Housing</div>
+            <div class="nav-label">Supporting Students</div>
         </div>
-        <div class="nav-item" data-section="title1">
+        <div class="nav-item" data-section="academic-growth">
             <div class="nav-dot"></div>
-            <div class="nav-label">Title 1 Status</div>
+            <div class="nav-label">Academic Growth</div>
         </div>
-        <div class="nav-item" data-section="growth">
+        <div class="nav-item" data-section="strategic-location">
             <div class="nav-dot"></div>
-            <div class="nav-label">Student Growth</div>
+            <div class="nav-label">Strategic Location</div>
         </div>
-        <div class="nav-item" data-section="expansion">
+        <div class="nav-item" data-section="smart-solution">
             <div class="nav-dot"></div>
-            <div class="nav-label">Land for Expansion</div>
+            <div class="nav-label">Smart Solution</div>
         </div>
         <div class="sidebar-photo">
             <img src="resources/ephesus_alert.jpg" alt="Ephesus Elementary School Community" loading="lazy">
@@ -817,10 +845,10 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-items">
             <div class="mobile-nav-item active" data-section="walkability">Walk</div>
-            <div class="mobile-nav-item" data-section="housing">Housing</div>
-            <div class="mobile-nav-item" data-section="title1">Title 1</div>
-            <div class="mobile-nav-item" data-section="growth">Growth</div>
-            <div class="mobile-nav-item" data-section="expansion">Land</div>
+            <div class="mobile-nav-item" data-section="supporting-students">Students</div>
+            <div class="mobile-nav-item" data-section="academic-growth">Academic</div>
+            <div class="mobile-nav-item" data-section="strategic-location">Location</div>
+            <div class="mobile-nav-item" data-section="smart-solution">Solution</div>
         </div>
     </nav>
 
@@ -835,25 +863,73 @@
     <section class="content-section" id="walkability">
         <div class="section-card">
             <div class="section-number">1</div>
-            <h2>Walkability & Accessibility</h2>
+            <h2>A Walking School in a Walkable Community</h2>
             <p>
-                Ephesus Elementary is strategically located at the heart of the community, making it easily accessible for families in the neighborhood. This central location means fewer students need to be bussed to school, reducing transportation costs and environmental impact while strengthening community connections.
+                Ephesus Elementary is located at the heart of east Chapel Hill, making it easily accessible for families nearby. This central location means fewer students need to be bused to school, reducing transportation costs and environmental impact, and strengthening community connections.
             </p>
             <div class="highlight-box">
                 <h3>Benefits of Our Central Location</h3>
                 <ul>
-                    <li>Ephesus has the highest number of kids in the district living within 1/2 a mile of the school.</li>
+                    <li>99 students live within half-mile walking distance (highest in district)</li>
+                    <li>80 students (20%) walk or bike daily (2<sup>nd</sup> highest in the district)</li>
+                    <li>Many teachers and staff live in the neighborhood</li>
                 </ul>
                 <p style="margin-top: 1rem;">Resources: <a href="resources.html#walkability" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Safe Routes to School 2025</a></p>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Affordable Housing -->
-    <section class="content-section" id="housing">
+    <!-- Section 2: Supporting Students -->
+    <section class="content-section" id="supporting-students">
         <div class="section-card">
             <div class="section-number">2</div>
-            <h2>Proximity to Affordable Housing</h2>
+            <h2>Essential Support for All Students</h2>
+            <p>
+                As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
+            </p>
+            <div class="stats">
+                <div class="stat-card stat-card-minority">
+                    <span class="stat-number" id="stat-50" data-target="50">0%</span>
+                    <span class="stat-label">Minority Enrollment</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="stat-38" data-target="38">0%</span>
+                    <span class="stat-label">Free/Reduced Lunch</span>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <h3>Highlights</h3>
+                <ul>
+                    <li>Highest number of Pre-K classrooms in district (NC Pre-K + Head Start)</li>
+                    <li>2 of 3 district EC Pre-K teachers are at Ephesus</li>
+                    <li>High linguistic diversity: Russian, Mandarin, Burmese, Spanish, Karen</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Academic Growth -->
+    <section class="content-section" id="academic-growth">
+        <div class="section-card">
+            <div class="section-number">3</div>
+            <h2>#1 in Academic Growth District-Wide</h2>
+            <p>
+                As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
+            </p>
+            <div class="highlight-box">
+                <h3>Title 1 Resources & Support</h3>
+                <ul>
+                    <li>TBD</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Strategic Location -->
+    <section class="content-section" id="strategic-location">
+        <div class="section-card">
+            <div class="section-number">4</div>
+            <h2>Strategic Location for Chapel Hill's Future</h2>
             <p>
                 Located near affordable housing developments, Ephesus Elementary serves families across all economic backgrounds. Our commitment to accessibility ensures that quality education is available to everyone in our community, regardless of their economic circumstances.
             </p>
@@ -898,67 +974,31 @@
         </div>
     </section>
 
-    <!-- Section 3: Title 1 Status -->
-    <section class="content-section" id="title1">
-        <div class="section-card">
-            <div class="section-number">3</div>
-            <h2>Title 1 Status School</h2>
-            <p>
-                As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to succeed. With 38% of our students receiving free or reduced lunch, we're committed to equity and excellence for all.
-            </p>
-            <div class="stats">
-                <div class="stat-card stat-card-minority">
-                    <span class="stat-number" id="stat-50" data-target="50">0%</span>
-                    <span class="stat-label">Minority Enrollment</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="stat-38" data-target="38">0%</span>
-                    <span class="stat-label">Free/Reduced Lunch</span>
-                </div>
-            </div>
-            <div class="highlight-box">
-                <h3>Title 1 Resources & Support</h3>
-                <ul>
-                    <li>TBD</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: Student Growth -->
-    <section class="content-section" id="growth">
-        <div class="section-card">
-            <div class="section-number">4</div>
-            <h2>Highest Student Growth Scores</h2>
-            <p>
-                We're proud to report the highest student growth scores in our district. This achievement reflects our dedicated teachers, supportive staff, and evidence-based instructional practices that meet every student where they are and help them reach their full potential.
-            </p>
-            <p>
-                Our commitment to individualized learning, coupled with robust intervention programs and enrichment opportunities, ensures that every child makes meaningful progress throughout the year.
-            </p>
-            <div class="highlight-box">
-                <h3>Our Success Factors</h3>
-                <ul>
-                    <li>TBD</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5: Expansion -->
-    <section class="content-section" id="expansion">
+    <!-- Section 5: Smart Solution -->
+    <section class="content-section" id="smart-solution">
         <div class="section-card">
             <div class="section-number">5</div>
-            <h2>Ample Land for Expansion</h2>
-            <p>
-                Looking toward the future, Ephesus Elementary sits on a spacious campus with ample land available for expansion. This provides the flexibility to grow alongside our community, adding facilities and programs as needed without relocating or compromising our central location.
-            </p>
+            <h2>Ephesus Is a Solution for the Future</h2>
+            <p>Placeholder text is right here.</p>
             <div class="highlight-box">
-                <h3>Future Growth Opportunities</h3>
+                <h3>Key points</h3>
                 <ul>
-                    <li>TBD</li>
+                    <li>Room to grow, both in terms of open space on campus to build, and unused classroom space in the current building</li>
+                    <li>No plan for relocating EC Pre-K teachers and students</li>
+                    <li>Increased busing costs if walk-zone families redistricted</li>
+                    <li>Loss of Title I intervention support for at-risk students</li>
+                    <li>Fragmentation of specialized programs and community ties</li>
+                    <li>Other schools at capacity — where would students go?</li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="content-section">
+        <div class="section-card cta-card">
+            <h2>Ephesus Elementary Needs Your Support!</h2>
+            <p>Go to our <a href="conversations.html">Conversations page</a> to find out how to tell local leaders why Ephesus Elementary is important to you!</p>
         </div>
     </section>
 
@@ -966,7 +1006,7 @@
         // 50% stat count-up animation when Title 1 section reaches halfway up viewport
         (function() {
             const statEl = document.getElementById('stat-50');
-            const section = document.getElementById('title1');
+            const section = document.getElementById('supporting-students');
             if (!statEl || !section) return;
 
             let animated = false;
@@ -1001,7 +1041,7 @@
         // 38% stat count-up animation when Title 1 section reaches halfway up viewport
         (function() {
             const statEl = document.getElementById('stat-38');
-            const section = document.getElementById('title1');
+            const section = document.getElementById('supporting-students');
             if (!statEl || !section) return;
 
             let animated = false;
@@ -1187,7 +1227,7 @@
             });
             
             // Animate chart when section is visible
-            const housingSection = document.getElementById('housing');
+            const housingSection = document.getElementById('strategic-location');
             if (!housingSection) return;
             
             let animated = false;
