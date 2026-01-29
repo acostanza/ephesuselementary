@@ -1503,28 +1503,55 @@
             ];
 
             const container = document.getElementById('growthChartRows');
+            const section = document.getElementById('academic-growth');
             
-            if (!container) return;
+            if (!container || !section) return;
 
+            // Create rows without animation initially
+            const rows = [];
             schools.forEach((school, index) => {
                 const row = document.createElement('div');
                 row.className = 'growth-chart-row' + (school.isTop ? ' top' : '');
+                row.style.opacity = '0';
                 row.innerHTML = `
                     <span class="growth-school-name">${school.name}</span>
-                    <div class="growth-bar-bg"><div class="growth-bar-fill" style="width: ${school.score}%"></div></div>
+                    <div class="growth-bar-bg"><div class="growth-bar-fill" style="width: 0%"></div></div>
                     <span class="growth-score">${school.score.toFixed(1)}</span>
                 `;
                 container.appendChild(row);
-
-                setTimeout(() => { row.style.animation = 'fadeUpChart 0.5s ease-out forwards'; }, 200 + index * 50);
-                
-                const bar = row.querySelector('.growth-bar-fill');
-                setTimeout(() => { bar.style.animation = 'slideInBar 0.8s ease-out forwards'; }, 400 + index * 50);
-
-                if (school.isTop) {
-                    setTimeout(() => { bar.classList.add('animated'); }, 1500);
-                }
+                rows.push({ row, school, index });
             });
+
+            // Animate when section scrolls into view
+            let animated = false;
+            function checkAndAnimate() {
+                if (animated) return;
+                const rect = section.getBoundingClientRect();
+                const viewportMid = window.innerHeight / 2;
+                if (rect.top <= viewportMid && rect.bottom >= 0) {
+                    animated = true;
+                    
+                    rows.forEach(({ row, school, index }) => {
+                        setTimeout(() => {
+                            row.style.opacity = '1';
+                            row.style.animation = 'fadeUpChart 0.5s ease-out forwards';
+                        }, 200 + index * 50);
+                        
+                        const bar = row.querySelector('.growth-bar-fill');
+                        setTimeout(() => {
+                            bar.style.width = school.score + '%';
+                            bar.style.animation = 'slideInBar 0.8s ease-out forwards';
+                        }, 400 + index * 50);
+
+                        if (school.isTop) {
+                            setTimeout(() => { bar.classList.add('animated'); }, 1500);
+                        }
+                    });
+                }
+            }
+            
+            window.addEventListener('scroll', checkAndAnimate, { passive: true });
+            checkAndAnimate();
         })();
     </script>
 </body>
