@@ -101,8 +101,8 @@
             color: #e6031b;
         }
 
-        /* Path line connecting dots - exclude last nav item (walkability) */
-        .nav-item:not([data-section="walkability"])::after {
+        /* Path line connecting dots - exclude last nav item (strategic-location) */
+        .nav-item:not([data-section="strategic-location"])::after {
             content: '';
             position: absolute;
             left: 9px;
@@ -998,6 +998,10 @@
             <div class="nav-dot"></div>
             <div class="nav-label">Smart Solution</div>
         </div>
+        <div class="nav-item" data-section="walkability">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Walkability</div>
+        </div>
         <div class="nav-item" data-section="supporting-students">
             <div class="nav-dot"></div>
             <div class="nav-label">Supporting Students</div>
@@ -1010,10 +1014,6 @@
             <div class="nav-dot"></div>
             <div class="nav-label">Strategic Location</div>
         </div>
-        <div class="nav-item" data-section="walkability">
-            <div class="nav-dot"></div>
-            <div class="nav-label">Walkability</div>
-        </div>
         <div class="sidebar-photo">
             <img src="resources/ephesus_alert.jpg" alt="Ephesus Elementary School Community" loading="lazy">
         </div>
@@ -1023,10 +1023,10 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-items">
             <div class="mobile-nav-item active" data-section="smart-solution">Solution</div>
+            <div class="mobile-nav-item" data-section="walkability">Walk</div>
             <div class="mobile-nav-item" data-section="supporting-students">Students</div>
             <div class="mobile-nav-item" data-section="academic-growth">Academic</div>
             <div class="mobile-nav-item" data-section="strategic-location">Location</div>
-            <div class="mobile-nav-item" data-section="walkability">Walk</div>
         </div>
     </nav>
 
@@ -1057,10 +1057,30 @@
         </div>
     </section>
 
-    <!-- Section 2: Supporting Students -->
-    <section class="content-section" id="supporting-students">
+    <!-- Section 2: Walkability -->
+    <section class="content-section" id="walkability">
         <div class="section-card">
             <div class="section-number">2</div>
+            <h2>A Walking School in a Walkable Community</h2>
+            <p>
+                Ephesus Elementary is located at the heart of east Chapel Hill, making it easily accessible for families nearby. This central location means fewer students need to be bused to school, reducing transportation costs and environmental impact, and strengthening community connections.
+            </p>
+            <div class="highlight-box">
+                <h3>Benefits of Our Central Location</h3>
+                <ul>
+                    <li>99 students live within half-mile walking distance<br> - Highest among CHCCS elementary schools in Chapel Hill</li>
+                    <li>80 students (20%) walk or bike daily<br> - 2<sup>nd</sup> highest among CHCCS elementary schools in Chapel Hill</li>
+                    <li>Many teachers and staff live in the neighborhood</li>
+                </ul>
+                <p style="margin-top: 1rem;">Resource: <a href="https://engage.chapelhillnc.gov/27005/widgets/102435/documents/72423"  target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Safe Routes to School Action Plan 2025</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Supporting Students -->
+    <section class="content-section" id="supporting-students">
+        <div class="section-card">
+            <div class="section-number">3</div>
             <h2>Essential Support for All Students</h2>
             <p>
                 We're committed to cultivating a community where all students are welcome. As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to be successful.
@@ -1090,10 +1110,10 @@
         </div>
     </section>
 
-    <!-- Section 3: Academic Growth -->
+    <!-- Section 4: Academic Growth -->
     <section class="content-section" id="academic-growth">
         <div class="section-card">
-            <div class="section-number">3</div>
+            <div class="section-number">4</div>
             <h2>#1 in Academic Growth District-Wide</h2>
             <p>
                 We've had the strongest student academic growth of any school in the district, showing that students of many backgrounds can thrive at Ephesus.
@@ -1119,10 +1139,10 @@
         </div>
     </section>
 
-    <!-- Section 4: Strategic Location -->
+    <!-- Section 5: Strategic Location -->
     <section class="content-section" id="strategic-location">
         <div class="section-card">
-            <div class="section-number">4</div>
+            <div class="section-number">5</div>
             <h2>Strategic Location for Chapel Hill's Future</h2>
             <p>
                 Ephesus sits near new and planned development including several affordable housing developments, serving families from all backgrounds. Our location offers better traffic distribution than the Estes corridor and has unused open space for campus expansion when needed. This strategic location helps working parents stay connected to their kids' education and keeps our community together.
@@ -1158,26 +1178,6 @@
                     <li>Unused open space available for campus expansion</li>
                 </ul>
                 <p style="margin-top: 1rem;">Resource: <a href="https://opendata-townofchapelhill.hub.arcgis.com/documents/chapel-hill-zoning-map/about" target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Town of Chapel Hill Zoning Map</a></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5: Walkability -->
-    <section class="content-section" id="walkability">
-        <div class="section-card">
-            <div class="section-number">5</div>
-            <h2>A Walking School in a Walkable Community</h2>
-            <p>
-                Ephesus Elementary is located at the heart of east Chapel Hill, making it easily accessible for families nearby. This central location means fewer students need to be bused to school, reducing transportation costs and environmental impact, and strengthening community connections.
-            </p>
-            <div class="highlight-box">
-                <h3>Benefits of Our Central Location</h3>
-                <ul>
-                    <li>99 students live within half-mile walking distance<br> - Highest among CHCCS elementary schools in Chapel Hill</li>
-                    <li>80 students (20%) walk or bike daily<br> - 2<sup>nd</sup> highest among CHCCS elementary schools in Chapel Hill</li>
-                    <li>Many teachers and staff live in the neighborhood</li>
-                </ul>
-                <p style="margin-top: 1rem;">Resource: <a href="https://engage.chapelhillnc.gov/27005/widgets/102435/documents/72423"  target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Safe Routes to School Action Plan 2025</a></p>
             </div>
         </div>
     </section>
