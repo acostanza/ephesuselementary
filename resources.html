@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- YouTube embeds need a Referer; avoid same-origin policy that triggers Error 153 -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Resources - Ephesus Elementary School</title>
     <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
     <style>
@@ -227,6 +229,17 @@
             .section-card { padding: 30px 15px; }
         }
         html { scroll-behavior: smooth; }
+        .media-video-wrap {
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+        .media-video-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 250px;
+            border: 0;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -251,6 +264,19 @@
     <section class="content-section">
         <div class="section-card">
             <h2>Resources & Documentation</h2>
+            
+            <h3 style="color: #e6031b; font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px;">Media</h3>
+            <div class="media-video-wrap">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/Xo2th2TfQxc"
+                    title="YouTube video"
+                    width="560"
+                    height="250"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
             
             <h3 style="color: #e6031b; font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px;">Presentations</h3>
             <ul class="align-list-with-text">
