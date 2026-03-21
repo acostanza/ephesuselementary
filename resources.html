@@ -143,7 +143,8 @@
             background: white;
             width: 100%;
         }
-        .content-section:first-of-type {
+        /* Hero is the first <section>; this targets the main content block only */
+        section.content-section {
             margin-top: 0;
             padding-top: 0;
         }
@@ -155,6 +156,10 @@
             margin-bottom: 0;
             border: none;
             transition: none;
+        }
+        /* Space below header: outer .content-section top padding is cleared above; this is ~half of the old 60+60px stack */
+        section.content-section > .section-card {
+            padding-top: 60px;
         }
         .content-section h2 { font-size: 2.5rem; color: #e6031b; margin-bottom: 25px; font-weight: 700; }
         .content-section .section-number {
@@ -213,8 +218,9 @@
             .hero { padding: 20px 20px 5px 100px; height: 160px; min-height: 160px; max-height: 160px; box-sizing: border-box; overflow: hidden; }
             .hero .description { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
             .content-section { padding: 40px 0; }
-            .content-section:first-of-type { padding-top: 0; }
+            section.content-section { padding-top: 0; }
             .section-card { padding: 40px 20px; }
+            section.content-section > .section-card { padding-top: 40px; }
             .hero h1 { font-size: 1.8rem; }
             .hero .description { font-size: 0.9rem; }
             .content-section h2 { font-size: 1.6rem; }
@@ -227,6 +233,8 @@
             .hero h1 { font-size: 1.5rem; }
             .content-section h2 { font-size: 1.4rem; }
             .section-card { padding: 30px 15px; }
+            section.content-section { padding-top: 0; }
+            section.content-section > .section-card { padding-top: 30px; }
         }
         html { scroll-behavior: smooth; }
         .media-video-wrap {
