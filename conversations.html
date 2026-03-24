@@ -106,7 +106,7 @@
         }
         .nav-item.active .nav-label { color: #e6031b; font-weight: 700; }
         .nav-item:hover .nav-label { color: #e6031b; }
-        .nav-item:not([data-section="contacts"])::after {
+        .nav-item:not([data-section="template"])::after {
             content: '';
             position: absolute;
             left: 9px;
@@ -291,6 +291,10 @@
             <div class="nav-dot"></div>
             <div class="nav-label">School District Leadership</div>
         </div>
+        <div class="nav-item" data-section="contacts">
+            <div class="nav-dot"></div>
+            <div class="nav-label">Additional Contacts</div>
+        </div>
         <div class="nav-item" data-section="full-example">
             <div class="nav-dot"></div>
             <div class="nav-label">Full Example Email</div>
@@ -298,10 +302,6 @@
         <div class="nav-item" data-section="template">
             <div class="nav-dot"></div>
             <div class="nav-label">Simple Email Template</div>
-        </div>
-        <div class="nav-item" data-section="contacts">
-            <div class="nav-dot"></div>
-            <div class="nav-label">Additional Contacts</div>
         </div>
         <div class="sidebar-photo">
             <img src="resources/EphesusallofUS.PNG" alt="Ephesus Elementary School Community" loading="lazy">
@@ -311,9 +311,9 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-items">
             <div class="mobile-nav-item active" data-section="leadership">Leadership</div>
+            <div class="mobile-nav-item" data-section="contacts">Contacts</div>
             <div class="mobile-nav-item" data-section="full-example">Full Email</div>
             <div class="mobile-nav-item" data-section="template">Template</div>
-            <div class="mobile-nav-item" data-section="contacts">Contacts</div>
         </div>
     </nav>
 
@@ -356,48 +356,9 @@
         </div>
     </section>
 
-    <section class="content-section" id="full-example">
-        <div class="section-card">
-            <div class="section-number">2</div>
-            <h2>Full Example Email</h2>
-            <div class="email-template-body" style="white-space: normal;">
-                <p>Dear CHCCS School Board Members,</p>
-                <p>I do not envy the position you are in to decide which elementary school(s) to close, and I will begin by thanking you for your service to our district.</p>
-                <p>I am a parent of two students at Ephesus Elementary and a member of the School Improvement Team. Here are my requests of you as you consider all of the options for moving our district forward:</p>
-                <ul>
-                    <li>Please consider revisiting the use of the <strong>$175M bond funds</strong>. Please challenge the two assumptions that (1) the most fiscally prudent use of those funds is to completely rebuild three schools and that (2) the funds must be earmarked for the three schools in the current plan. The issues and facts that Orange County residents considered when initially approving the bond have now changed. I would appreciate seeing a plan that included a cost breakdown for <strong>repair/renovation of major needs at a few schools</strong> instead of constructing three entirely new facilities and refocusing the balance of the funds to school resources/programs/teachers. <u>If that requires a revote, let's pursue the path that is most advantageous to our district, not the one we are hesitant to change because of inertia.</u></li>
-                    <li>Please consider that Ephesus is a <strong>Title I school</strong> and that it had the <strong>highest student growth scores</strong> in the district last year among elementary schools. Something about this particular teacher and leadership team and school community is getting it right. We talk about closing the achievement gap; let's preserve the communities that have proven they can.</li>
-                    <li>Please consider location of the schools: <strong>neighborhood walkability, proximity of students to the school, local traffic, transportation needs of students, and room to grow the campus</strong> (i.e. additional available land).</li>
-                    <li>Finally a plug for the <strong>French program</strong>, a significant reason we chose a house zoned for Ephesus as it is only one of two elementary schools that teaches French. No matter your decision, please <strong>find a path that allows students to continue to learn their current foreign language</strong> and not force the students to change to learning a new language with peers who are already much further along.</li>
-                </ul>
-                <p>Thank you for being thoughtful and deliberate in this decision and for thinking outside the box in which we currently appear to constrain ourselves.</p>
-                <p>I am copying Stacie to highlight to the Board what an excellent leader she is for our school; any student or teacher in the district would be lucky to move under her leadership and in the welcoming and joyful community she fosters to support the growth of each individual learner.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="template">
-        <div class="section-card">
-            <div class="section-number">3</div>
-            <h2>Simple Email Template</h2>
-            <div class="email-template-body">Dear <span class="email-placeholder">[Superintendent / District Leadership Team]</span>,
-
-I am a parent in the CHCCS district and part of the Ephesus Elementary community. I recognize the difficult position the district is in as it plans for enrollment changes, aging facilities, and long-term fiscal responsibility.
-
-I am writing to ask how family decision-making factors — such as early childhood program continuity, walkability and transportation, access to Title I services, and affordable housing already approved to feed into neighborhood schools — will be incorporated into the district's analysis as conversations about potential school closures continue.
-
-Many families understand the need for responsible planning, but are concerned that uncertainty itself may accelerate enrollment declines. I appreciate any clarity you can provide about how these dynamics will be considered in future proposals.
-
-Thank you for your time and for your continued work on behalf of our students.
-
-Sincerely,
-<span class="email-placeholder">[Your Name]</span></div>
-        </div>
-    </section>
-
     <section class="content-section" id="contacts">
         <div class="section-card">
-            <div class="section-number">4</div>
+            <div class="section-number">2</div>
             <h2>Additional Contacts</h2>
 
 
@@ -425,6 +386,45 @@ Sincerely,
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Elizabeth Sharp</strong>, Council Member — <a href="mailto:esharp@townofchapelhill.org">esharp@townofchapelhill.org</a> — 415-632-8225</li>
                 <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><strong>Emily Holt</strong>, <a href="https://www.chapelhillaffordablehousing.org/our-team" target="_blank" rel="noopener noreferrer">Affordable Housing</a> — <a href="mailto:eholt@townofchapelhill.org">eholt@townofchapelhill.org</a> — 919-969-5058</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="content-section" id="full-example">
+        <div class="section-card">
+            <div class="section-number">3</div>
+            <h2>Full Example Email</h2>
+            <div class="email-template-body" style="white-space: normal;">
+                <p>Dear CHCCS School Board Members,</p>
+                <p>I do not envy the position you are in to decide which elementary school(s) to close, and I will begin by thanking you for your service to our district.</p>
+                <p>I am a parent of two students at Ephesus Elementary and a member of the School Improvement Team. Here are my requests of you as you consider all of the options for moving our district forward:</p>
+                <ul>
+                    <li>Please consider revisiting the use of the <strong>$175M bond funds</strong>. Please challenge the two assumptions that (1) the most fiscally prudent use of those funds is to completely rebuild three schools and that (2) the funds must be earmarked for the three schools in the current plan. The issues and facts that Orange County residents considered when initially approving the bond have now changed. I would appreciate seeing a plan that included a cost breakdown for <strong>repair/renovation of major needs at a few schools</strong> instead of constructing three entirely new facilities and refocusing the balance of the funds to school resources/programs/teachers. <u>If that requires a revote, let's pursue the path that is most advantageous to our district, not the one we are hesitant to change because of inertia.</u></li>
+                    <li>Please consider that Ephesus is a <strong>Title I school</strong> and that it had the <strong>highest student growth scores</strong> in the district last year among elementary schools. Something about this particular teacher and leadership team and school community is getting it right. We talk about closing the achievement gap; let's preserve the communities that have proven they can.</li>
+                    <li>Please consider location of the schools: <strong>neighborhood walkability, proximity of students to the school, local traffic, transportation needs of students, and room to grow the campus</strong> (i.e. additional available land).</li>
+                    <li>Finally a plug for the <strong>French program</strong>, a significant reason we chose a house zoned for Ephesus as it is only one of two elementary schools that teaches French. No matter your decision, please <strong>find a path that allows students to continue to learn their current foreign language</strong> and not force the students to change to learning a new language with peers who are already much further along.</li>
+                </ul>
+                <p>Thank you for being thoughtful and deliberate in this decision and for thinking outside the box in which we currently appear to constrain ourselves.</p>
+                <p>I am copying Stacie to highlight to the Board what an excellent leader she is for our school; any student or teacher in the district would be lucky to move under her leadership and in the welcoming and joyful community she fosters to support the growth of each individual learner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="template">
+        <div class="section-card">
+            <div class="section-number">4</div>
+            <h2>Simple Email Template</h2>
+            <div class="email-template-body">Dear <span class="email-placeholder">[Superintendent / District Leadership Team]</span>,
+
+I am a parent in the CHCCS district and part of the Ephesus Elementary community. I recognize the difficult position the district is in as it plans for enrollment changes, aging facilities, and long-term fiscal responsibility.
+
+I am writing to ask how family decision-making factors — such as early childhood program continuity, walkability and transportation, access to Title I services, and affordable housing already approved to feed into neighborhood schools — will be incorporated into the district's analysis as conversations about potential school closures continue.
+
+Many families understand the need for responsible planning, but are concerned that uncertainty itself may accelerate enrollment declines. I appreciate any clarity you can provide about how these dynamics will be considered in future proposals.
+
+Thank you for your time and for your continued work on behalf of our students.
+
+Sincerely,
+<span class="email-placeholder">[Your Name]</span></div>
         </div>
     </section>
 
