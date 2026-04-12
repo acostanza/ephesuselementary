@@ -326,6 +326,120 @@
             flex-wrap: wrap;
         }
 
+        /* Animated Academic Growth Chart (Part 2) */
+        .growth-chart-container {
+            background: #ffffff;
+            padding: 15px 20px 20px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 28px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .growth-chart-header {
+            text-align: left;
+            margin-bottom: 10px;
+            opacity: 1;
+            transform: translateY(0);
+            /* animation: fadeUpChart 0.6s ease-out forwards; */
+        }
+
+        .growth-chart-subtitle {
+            color: #4a4a4a;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            font-weight: 700;
+        }
+
+        .growth-chart-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .growth-chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 55px;
+            align-items: center;
+            gap: 10px;
+            padding: 0 10px;
+            margin-bottom: -1px;
+            border: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .growth-chart-row.top {
+            background: linear-gradient(135deg, rgba(182, 45, 34, 0.08) 0%, rgba(182, 45, 34, 0.03) 100%);
+            border: none;
+        }
+
+        .growth-school-name {
+            font-size: 1rem;
+            color: #555;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .growth-chart-row.top .growth-school-name {
+            color: #b62d22;
+            font-weight: 700;
+        }
+
+        .growth-bar-bg {
+            height: 14px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .growth-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            background: linear-gradient(90deg, #9ca3af 0%, #d1d5db 100%);
+        }
+
+        .growth-chart-row.top .growth-bar-fill {
+            background: linear-gradient(90deg, #b62d22, #d44535, #b62d22);
+            background-size: 200% 100%;
+            box-shadow: 0 0 10px rgba(182, 45, 34, 0.3);
+        }
+
+        .growth-score {
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: right;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .growth-chart-row.top .growth-score {
+            font-size: 1.1rem;
+            color: #b62d22;
+        }
+
+        @keyframes fadeUpChart {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInBar {
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes shimmerBar {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .growth-chart-row.top .growth-bar-fill.animated {
+            animation: shimmerBar 3s linear infinite;
+        }
+
         .stat-card {
             background: #e6031b;
             color: white;
@@ -955,7 +1069,7 @@
             <div class="section-number">2</div>
             <h2>Essential Support for All Students</h2>
             <p>
-                We're committed to cultivating a community where all students are welcome. As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to be successful.
+                We're committed to cultivating a community where all students are welcome. As a Title 1 school, Ephesus Elementary receives federal funding to support students from low-income families, ensuring every child has access to the resources they need to be successful. We've also had the strongest student academic growth of any school in the district, showing that students of many backgrounds can thrive at Ephesus. In fact, 98% of teachers and students say Ephesus is a good place to work and learn.
             </p>
             <div class="stats">
                 <div class="stat-card">
@@ -971,13 +1085,21 @@
                     <span class="stat-label">Say Ephesus is a good place to learn</span>
                 </div>
             </div>
+            <div class="growth-chart-container">
+                <div class="growth-chart-header">
+                    <p class="growth-chart-subtitle">Academic Growth Scores 2024-25</p>
+                </div>
+                <div class="growth-chart-rows" id="growthChartRowsPart2"></div>
+            </div>
             <div class="highlight-box">
                 <h3>Highlights</h3>
                 <ul>
-                    <li>Highest number of Pre-K classrooms in district (NC Pre-K + Head Start)</li>
-                    <li>2 of 3 district EC Pre-K teachers are at Ephesus</li>
-                    <li>High linguistic diversity: Russian, Mandarin, Burmese, Spanish, Karen</li>
+                    <li>Ephesus has the greatest number of Pre-K classrooms in district (NC Pre-K + Head Start), and 2 of 3 district EC Pre-K teachers are at Ephesus</li>
+                    <li>Ephesus had a 90.2 academic growth score in 2024-25, the highest in Chapel Hill-Carrboro</li>
+                    <li>Met or exceeded growth in every demographic category and in math; narrowly missed in reading (by 0.02)</li>
+                    <li>3-year high in students with disabilities showing proficiency on grade level assessments (EOGs)</li>
                 </ul>
+                <p style="margin-top: 1rem;">Resource: <a href="https://ncfvapublicprod.ondemand.sas.com/src/school?school=681311&year=2025" target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">North Carolina School Report Cards</a></p>
             </div>
         </div>
     </section>
@@ -988,21 +1110,21 @@
             <div class="section-number">3</div>
             <h2>Enrollment is Increasing</h2>
             <p>
-                Ephesus Elementary is strategically located in an area of town that, 50+ years after it was built, continues to drive steady enrollment. Enrollment projections for elementary schools show two magnet programs (Glenwood and FPG) along with McDougle and Ephesus as maintaining or slightly increasing enrollments in 2030 and 2035. Ephesus is one of the only schools projected to maintain enrollment in the future, and it is projected to do so without a magnet program.
+                Ephesus Elementary is strategically located in an area of town that, 50+ years after it was built, continues to drive steady enrollment. The latest enrollment projections for elementary schools show the two magnet programs (Glenwood and FPG) along with McDougle and Ephesus as maintaining or slightly increasing enrollments over the next ten years. Ephesus is one of the only schools projected to maintain enrollment in the future, and it is projected to do so without a magnet program.
             </p>
             
             <div class="academic-growth-image">
-                <img src="resources/Elementary_Capacity_Enrollment_Utilization.png" alt="Enrollment and utilization projections by school with Ephesus Elementary highlighted">
+                <img src="resources/capacity_projections.jpg" alt="Percent capacity by school from 2025-2026 through 2035-2036 with Ephesus Elementary highlighted">
             </div>
             
             <div class="highlight-box">
                 <h3>Key Points:</h3>
                 <ul>
-                    <li>Ephesus' current utilization rate is in the 'sweet spot' of 75% - 100%</li>
-                    <li>Utilization is projected to rise rapidly for Ephesus to 86% by 2030 and remain over 80% through 2035</li>
+                    <li>Ephesus' utilization rate is projected to increase to over 86% in the 2026-2027 school year and continue to rise over the next 10 years</li>
+                    <li>Beginning in 2030-2031 and every year after that, Ephesus is projected to have the second highest utilization rate, behind Glenwood</li>
                     <li>Ephesus is one of the only non-magnet schools with high utilization rates in the future</li>
                 </ul>
-                <p style="margin-top: 1rem;">Resource: <a href="https://docs.google.com/presentation/d/1P_G24lU4BRFnP4tj3ezQq2jKOWhu60wg/mobilepresent?slide=id.p16" target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">CHCCS School Board Retreat Presentation</a></p>
+                <p style="margin-top: 1rem;">Resource: <a href="https://d3n9y02raazwpg.cloudfront.net/chccs/3970b8cd-1338-11f1-bb28-005056a89546-1e2c749f-7033-4b63-a3fd-af1d72fe943b-1775823513.pdf" target="_blank" rel="noopener noreferrer" style="color: #e6031b; text-decoration: underline; font-weight: 600;">Carolina Demography presentation in CHCCS BOE Work Session April 9, 2026</a></p>
             </div>
         </div>
     </section>
@@ -1181,6 +1303,75 @@
 
             window.addEventListener('scroll', checkAndAnimate, { passive: true });
             checkAndAnimate();
+        })();
+
+        // Part 2 animated academic growth chart
+        (function() {
+            const schools = [
+                { name: 'Ephesus', score: 90.2, isTop: true },
+                { name: 'Carrboro', score: 87.5 },
+                { name: 'FPG', score: 86.0 },
+                { name: 'Glenwood', score: 82.2 },
+                { name: 'Seawell', score: 81.1 },
+                { name: 'Rashkis', score: 80.5 },
+                { name: 'Morris Grove', score: 80.5 },
+                { name: 'Northside', score: 80.4 },
+                { name: 'Estes Hills', score: 76.7 },
+                { name: 'McDougle', score: 76.2 },
+                { name: 'Scroggs', score: 73.9 },
+            ];
+
+            const container = document.getElementById('growthChartRowsPart2');
+            const section = document.getElementById('supporting-students');
+            if (!container || !section) return;
+
+            const rows = [];
+            schools.forEach((school, index) => {
+                const row = document.createElement('div');
+                row.className = 'growth-chart-row' + (school.isTop ? ' top' : '');
+                row.style.opacity = '1';
+                row.style.transform = 'translateY(0)';
+                row.innerHTML = `
+                    <span class="growth-school-name">${school.name}</span>
+                    <div class="growth-bar-bg"><div class="growth-bar-fill" style="width: ${school.score}%; transform: scaleX(1);"></div></div>
+                    <span class="growth-score">${school.score.toFixed(1)}</span>
+                `;
+                container.appendChild(row);
+                rows.push({ row, school, index });
+            });
+
+            // Animation disabled for now: render chart at final state immediately.
+            /*
+            let animated = false;
+            function checkAndAnimate() {
+                if (animated) return;
+                const rect = section.getBoundingClientRect();
+                const viewportMid = window.innerHeight / 2;
+                if (rect.top <= viewportMid && rect.bottom >= 0) {
+                    animated = true;
+
+                    rows.forEach(({ row, school, index }) => {
+                        setTimeout(() => {
+                            row.style.opacity = '1';
+                            row.style.animation = 'fadeUpChart 0.5s ease-out forwards';
+                        }, 200 + index * 50);
+
+                        const bar = row.querySelector('.growth-bar-fill');
+                        setTimeout(() => {
+                            bar.style.width = school.score + '%';
+                            bar.style.animation = 'slideInBar 0.8s ease-out forwards';
+                        }, 400 + index * 50);
+
+                        if (school.isTop) {
+                            setTimeout(() => { bar.classList.add('animated'); }, 1500);
+                        }
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', checkAndAnimate, { passive: true });
+            checkAndAnimate();
+            */
         })();
 
         // Popup notification functionality
